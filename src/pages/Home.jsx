@@ -36,7 +36,7 @@ function Home() {
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
           }}
         >
-          <span style={{ color: "#ffffff" }}>Ises</span>
+          <span style={{ color: "#ffffff" }}>ISES</span>
           <span style={{ color: "#D00A2E", marginLeft: "10px" }}>GESTIÓN</span>
         </Typography>
         <Button

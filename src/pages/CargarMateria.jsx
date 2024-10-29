@@ -69,19 +69,27 @@ const CargarMaterias = () => {
 
   return (
     <>
-    <Registros />
    
      {/* <Navegador/> */}
-      <Typography variant="h4" component="h4" color="blue" align="center"marginTop={"100px"}>
-        Formulario de registro Materias
+      <Typography
+        align="center"
+        padding={"10px"}
+        sx={{
+          fontSize: '2rem', 
+          fontWeight: 'bold',
+          color:"#27496D", 
+  
+        }}
+       >
+        Completar Formulario <br /> de registro Materias
       </Typography>
-      <Box sx={{ mt: 10 }} component="form" onSubmit={formik.handleSubmit}>
+      <Box  component="form" onSubmit={formik.handleSubmit}>
         <Grid
         container
         direction="column"
         justifyContent="center"
         alignItems="center"
-        sx={{ mt: 10 }}
+        
         >
             <TextField
             type="text"
@@ -126,7 +134,7 @@ const CargarMaterias = () => {
           </TextField>
 
 
-<Button variant="contained" type="submit" sx={{ width: 300, mt: 3, mx:1 }} disabled={!formik.isValid}>
+            <Button variant="contained" type="submit" sx={{ width: 300, mt: 3, mx:1 }} disabled={!formik.isValid}>
               Enviar Formulario
             </Button>
          
@@ -142,20 +150,24 @@ const CargarMaterias = () => {
               </Box>
           </Modal>
 
-
-
-
-
-            <IconButton
-            href="/listarmaterias"
+            <Button
+            href="Listados"
+            // href="/listarmaterias"
             variant="contained"
             type="submit"
             edge="start"
             aria-label="menu"
-            sx={{ width: 300, mt: 3 }}
+            sx={{width: 300,
+              mt: 3,
+              backgroundColor: '#27496D', // Color de fondo
+              borderRadius: "0.5rem",
+              '&:hover': {
+                backgroundColor: '#00A8CC'
+              }
+              }}
           >
             Ver Todas las Materias. 
-          </IconButton>
+          </Button>
         </Grid>               
        
       </Box>

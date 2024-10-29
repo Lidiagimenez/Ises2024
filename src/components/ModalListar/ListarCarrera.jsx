@@ -166,15 +166,19 @@ function CarrerasTable() {
   };
 
   return (
-    <>
-    <Listados/>
-      {/* <Navegador />  */}
-      
+    <>    
       <Typography
-      variant="h5"
-      color=""
-      component="div"
-      sx={{ mr: 2, borderBottom: 1 ,marginTop:10}}>
+        variant="h5"
+        component="div"
+        sx={{
+          mr: 2,
+          marginTop: 10,
+          fontSize: '2rem',
+          fontWeight: 'bold',
+          color: "#27496D",
+          textAlign: 'center', // Centra el texto
+        }}
+        >
         Listado de Carreras
       </Typography>
       <Container
@@ -195,7 +199,7 @@ function CarrerasTable() {
         <div
           style={{
             height: 650,
-            // width: "100%",
+            width: "50rem",
             display: "flex",
             flexDirection: "column",
             alignContent: "center",
@@ -216,8 +220,8 @@ function CarrerasTable() {
                     }
                     onChange={() => handleRowSelection(params.row)}
                     style={{
-                      width: 20,
-                      height: 20,
+                      width: '1rem',
+                      height: '1rem',
                     }}
                   />
                 ),
@@ -246,13 +250,13 @@ function CarrerasTable() {
             components={{
               Toolbar: () => (
                 <>
-                  <GridToolbar
+                 <GridToolbar
                     style={{
                       backgroundColor: "",
-                      color: "white",
-                      border: "1px solid black",
-                      padding: "5px 10px",
-                      borderRadius: "4px",
+                      color: "#ffffff",
+                      border: "1rem solid #27496D",
+                      padding: "1rem 1,5rem",
+                      borderRadius: "0.5rem",
                     }}
                   />
                 </>

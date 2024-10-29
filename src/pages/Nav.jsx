@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
@@ -10,21 +10,17 @@ import ListItemText from "@mui/material/ListItemText";
 import HomeIcon from "@mui/icons-material/Home";
 import ListIcon from "@mui/icons-material/List";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import bien from '../assets/bien.svg';
 import LogoutIcon from "@mui/icons-material/Logout";
-const manejarCerrarSesion = () => {
-  // Lógica para cerrar sesión aquí
-  navigate("/login"); // Redirige a la página de inicio de sesión
-};
 
-const Home2 = () => {
+const Nav = () => {
   const [abrirMenu, setAbrirMenu] = useState(true);
+  const navigate = useNavigate();
 
   const opcionesMenu = [
     {
       text: "Inicio",
       icon: <HomeIcon fontSize="large" />,
-      link: "/home2",
+      link: "/Home2",
     },
     {
       text: "Listados",
@@ -34,13 +30,17 @@ const Home2 = () => {
     {
       text: "Registrar",
       icon: <PersonAddIcon fontSize="large" />,
-      link: "/registros",
+      link: "/Registros",
     },
   ];
 
+  const manejarCerrarSesion = () => {
+    // Lógica para cerrar sesión aquí
+    navigate("/login"); // Redirige a la página de inicio de sesión
+  };
+
   return (
     <Box sx={{ display: "flex", height: "100vh" }}>
-      {/* Navbar izquierdo */}
       <Box
         sx={{
           position: 'fixed',
@@ -51,10 +51,9 @@ const Home2 = () => {
           height: '100%',
           backgroundColor: '#27496D', 
           transition: 'width 0.3s ease',
-          overflow: 'hidden',
-          zIndex: 1, /* Z-index más bajo para que quede debajo del contenido principal */
           boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", 
           borderRadius: '40px 40px 40px 20px',
+          overflow: 'hidden',
         }}
       >
         {/* Botón para abrir/cerrar el menú */}
@@ -65,7 +64,6 @@ const Home2 = () => {
             height: '64px', 
             padding: '0 16px',
             backgroundColor: '#00A8CC',
-           
           }}
         >
           <ListItemButton onClick={() => setAbrirMenu(!abrirMenu)}>
@@ -108,17 +106,16 @@ const Home2 = () => {
                 />
               </ListItemButton>
             </ListItem>
-            
           ))}
-        </List>
-        {/* Botón de Cerrar Sesión */}
-        <ListItem disablePadding>
+          
+          {/* Botón de Cerrar Sesión */}
+          <ListItem disablePadding>
             <ListItemButton onClick={manejarCerrarSesion}>
               <ListItemIcon sx={{ color: '#ffffff' }}>
                 <LogoutIcon fontSize="large" />
               </ListItemIcon>
               <ListItemText
-                primary="Cerrar "
+                primary="Cerrar"
                 sx={{
                   color: '#ffffff',
                   opacity: abrirMenu ? 1 : 0,
@@ -128,54 +125,10 @@ const Home2 = () => {
               />
             </ListItemButton>
           </ListItem>
-      </Box>
-      
-
-      {/* Contenido sobrepuesto a la derecha del navbar */}
-      <Box
-        sx={{
-          marginLeft: abrirMenu ? '250px' : '80px', /* Ajustar espacio al abrir/cerrar menú */
-          width: 'calc(112rem - 80px)', /* Resto del espacio para el contenido */
-          padding: '20px',
-          backgroundColor: '#C1DADF', /* Fondo blanco para simular la superposición */
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between', 
-          alignItems: 'center',
-          height: '100%',
-          borderRadius: '30px', /* Bordes redondeados */
-          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', /* Sombra */
-          zIndex: '2', /* Z-index más alto para que se vea sobre el navbar */
-          position: 'relative',
-        }}
-      >
-        {/* Contenedor de texto a la izquierda */}
-        <Box sx={{ width: '30%', padding: '20px' }}>
-          <h1 style={{ color: '#27496D', fontSize: '3rem', fontWeight: 'bold' }}>
-            Bienvenido a ISES Gestión
-          </h1>
-          <p style={{ color: '#545CA1', fontSize: '1.5rem', lineHeight: '1.7' }}>
-            En este sistema podrás registrar usuarios, cargar materias y carreras, 
-            así como listar las mismas para sus respectivas modificaciones.
-          </p>
-        </Box>
-
-        {/* Espacio para la imagen a la derecha */}
-        <Box
-          sx={{
-            width: '80%',
-            height: '100%', 
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-          }}
-        >
-          {/* Coloca aquí la imagen */}
-          <img src={bien} alt="Gestión" style={{ width: '100%', height: 'auto' }} />
-        </Box>
+        </List>
       </Box>
     </Box>
   );
 };
 
-export default Home2;
+export default Nav;

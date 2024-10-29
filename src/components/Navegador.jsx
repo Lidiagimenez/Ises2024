@@ -1,140 +1,141 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
+import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import Popover from "@mui/material/Popover";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import HomeIcon from "@mui/icons-material/Home";
+import ListIcon from "@mui/icons-material/List";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import LogoutIcon from "@mui/icons-material/Logout"; // Ícono de cerrar sesión
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../theme/theme";
+
 const Navegador = () => {
-  const [listadosAnchorEl, setListadosAnchorEl] = useState(null);
-  const [registrosAnchorEl, setRegistrosAnchorEl] = useState(null);
+  const [abrirMenu, setAbrirMenu] = useState(true);
   const navigate = useNavigate();
-  
 
-  const handleMenuClose = () => {
-    setListadosAnchorEl(null);
-    setRegistrosAnchorEl(null);
-  };
-
-  const listadosLinks = [
-    { to: "/listarusuarios", label: "Listar Usuarios" },
-    { to: "/listarmaterias", label: "Listar Materias" },
-    { to: "/listarcarreras", label: "Listar Carrera" },
+  const opcionesMenu = [
+    {
+      text: "Inicio",
+      icon: <HomeIcon fontSize="large" />,
+      link: "/home",
+    },
+    {
+      text: "Listados",
+      icon: <ListIcon fontSize="large" />,
+      link: "/listados",
+    },
+    {
+      text: "Registrar",
+      icon: <PersonAddIcon fontSize="large" />,
+      link: "/registros",
+    },
   ];
-
-  const registrosLinks = [
-    { to: "/registrar", label: "Registrar Usuario" },
-    { to: "/CargarMateria", label: "Registrar Materias" },
-    { to: "/CargarCarrera", label: "Registrar Carrera" },
-  ];
-  
 
   return (
-    <Box sx={{ flexGrow: 1, margin: 1 }}>
-      <AppBar // Propirdad de material UI agregado para que el nav sea horizontal
-      position="fixed" 
-      sx={{ 
-        height: "100vh", // Altura completa de la pantalla
-        width: "200px", // Ancho personalizado de la barra
-        left: 0, // Alineado al lado izquierdo
-        top: 0, // Desde la parte superior
-        border: 1,
-        backgroundColor: "#2A2185", // Color de fondo
-        }}>
+    <Box sx={{ display: "flex", height: "100vh" }}>
+      {/* Navbar izquierdo */}
+      <AppBar
+        position="fixed"
+        sx={{
+          height: "100vh",
+          width: abrirMenu ? "250px" : "80px",
+          backgroundColor: "#27496D",
+          transition: "width 0.3s ease",
+          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
+          borderRadius: "40px 40px 40px 20px",
+          zIndex: 1000,
+        }}
+      >
         <ThemeProvider theme={theme}>
           <Toolbar
-            variant="dense" // Altura un poco menor de lo normal
-            style={{
+            variant="dense"
+            sx={{
               display: "flex",
-              flexDirection: "column", // Cambiar a columna para que los items sean verticales
-              alignItems: "center", // Alineación centrada horizontalmente
-              justifyContent: "flex-start", // Alineación hacia la parte superior
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "flex-start",
               padding: "10px",
             }}
           >
-            <Typography
-              variant="h6"
-              color="inherit"
-              component="div"
-              sx={{
-                mr: 2, // Alineación hacia la parte superior
-                fontSize: "25px",
-              }}
-            >
-              <Link
-                to="/home" 
-                style={{ textDecoration: "none", 
-                  color: "inherit",
-               }}
-              >
-                Inicio 
-              </Link>
-            </Typography>
-           {/* ----------------------Modoficar Login para que sea Acceso------------- */}
-            <Typography
-              variant="h6"
-              color="inherit"
-              component="div"
-              sx={{ mr: 2, 
-                fontSize: "25px" 
-              }}
-            >
-              
-              <Link to="/" style={{ 
-                textDecoration: "none", 
-                color: "inherit",
-                 }}>
-                Login
-              </Link>
-            </Typography>
-
-            {/* ----------------------Modificar botones---------------------- */}
-
+            {/* Botón para abrir/cerrar el menú */}
             <IconButton
-        edge="start"
-        color="inherit"
-        aria-label="listados"
-        onClick={() => navigate('/listados')}
-        sx={{ mr: 2, borderBottom: 2, borderColor: "#ffffff" }}
-      >
-        Listados
-      </IconButton>
+              onClick={() => setAbrirMenu(!abrirMenu)}
+              sx={{ color: "white", fontSize: "2.7rem" }}
+            >
+              <HiOutlineBars3 />
+            </IconButton>
 
-      <IconButton
-        edge="start"
-        color="inherit"
-        aria-label="registros"
-        onClick={() => navigate('/registros')}
-        sx={{ mr: 2, borderBottom: 2, borderColor: "red" }}
-      >
-        Registros
-      </IconButton>
+            {/* Opciones del menú */}
+            {opcionesMenu.map((item) => (
+              <IconButton
+                key={item.text}
+                component={Link}
+                to={item.link}
+                sx={{
+                  color: "#ffffff",
+                  justifyContent: abrirMenu ? "flex-start" : "center",
+                  padding: "8px 16px",
+                  marginLeft: abrirMenu ? "10px" : "0",
+                  "&:hover": {
+                    backgroundColor: "#C1DADF",
+                    borderRadius: "20px 0px 0px 20px",
+                    boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
+                    transform: "scale(1.05)",
+                  },
+                }}
+              >
+                {item.icon}
+                <Typography
+                  sx={{
+                    color: "#ffffff",
+                    opacity: abrirMenu ? 1 : 0,
+                    transition: "opacity 0.3s",
+                    fontSize: "1.2rem",
+                    marginLeft: abrirMenu ? "10px" : "0",
+                  }}
+                >
+                  {item.text}
+                </Typography>
+              </IconButton>
+            ))}
 
-
-            {/* ----------------------Boton ISES---------------------- */}
-
-            <Typography
-              variant="h6"
-              color="inherit"
-              component="div"
+            {/* Ícono de cerrar sesión */}
+            <IconButton
+              onClick={() => {
+                // Lógica para cerrar sesión
+                navigate("/");
+              }}
               sx={{
-                mr: 2,
-                fontSize: "25px",
+                color: "#ffffff",
+                justifyContent: abrirMenu ? "flex-start" : "center",
+                padding: "8px 16px",
+                marginLeft: abrirMenu ? "10px" : "0",
+                marginTop: "auto",
+                "&:hover": {
+                  backgroundColor: "#C1DADF",
+                  borderRadius: "20px 0px 0px 20px",
+                  boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.2)",
+                  transform: "scale(1.05)",
+                },
               }}
             >
-              <Link
-                to="https://itesposadas.edu.ar/"
-                style={{ textDecoration: "none", color: "inherit" }}
+              <LogoutIcon fontSize="large" />
+              <Typography
+                sx={{
+                  color: "#ffffff",
+                  opacity: abrirMenu ? 1 : 0,
+                  transition: "opacity 0.3s",
+                  fontSize: "1.2rem",
+                  marginLeft: abrirMenu ? "10px" : "0",
+                }}
               >
-                ISES
-              </Link>
-            </Typography>
+                Cerrar sesión
+              </Typography>
+            </IconButton>
           </Toolbar>
         </ThemeProvider>
       </AppBar>

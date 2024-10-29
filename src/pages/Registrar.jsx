@@ -19,6 +19,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
 import Registros from "./Registros";
 import Home2 from "./Home2";
+import Nav from "./nav";
 function Registrar() {
 const currencies = [
   { value: "1", label: "Administrador" },
@@ -70,7 +71,7 @@ const currencies2 = [
       telefono2: "",
       fecha_nacimiento: "",
       id_tipo_usuario: "",
-      id_estado_usuario: "",
+      id_estado_usuario: "1",
       alta_baja: "1",
       legajo: "",
       fecha_inscripcion: "",
@@ -93,20 +94,20 @@ const currencies2 = [
       id_tipo_usuario: Yup.number().required("defina tipo de Usuario"),
       id_estado_usuario: Yup.number().required("defina estado de usuario"),
       alta_baja: Yup.number(1).required("ingrese alt"),
-      //las siguientes lineas de codigos fueron modificadas
-
+  
+      // Validaciones condicionales
       legajo: Yup.string().when("id_tipo_usuario", {
-        is: (id_tipo_usuario) => id_tipo_usuario === "3",
+        is: (id_tipo_usuario) => id_tipo_usuario === '3', // Consideramos id_tipo_usuario como número
         then: () => Yup.string().required("Legajo es requerido"),
         otherwise: () => Yup.string(),
       }),
       fecha_inscripcion: Yup.date().when("id_tipo_usuario", {
-        is: (id_tipo_usuario) => id_tipo_usuario === "3",
+        is: (id_tipo_usuario) => id_tipo_usuario === '3', // Número 3 en lugar de string "3"
         then: () => Yup.date().required("Fecha de inscripción es requerida"),
         otherwise: () => Yup.date(),
       }),
       id_carrera: Yup.number().when("id_tipo_usuario", {
-        is: (id_tipo_usuario) => id_tipo_usuario === "3",
+        is: (id_tipo_usuario) => id_tipo_usuario === '3',
         then: () => Yup.number().required("Carrera es requerida"),
         otherwise: () => Yup.number(),
       }),
@@ -153,7 +154,9 @@ const currencies2 = [
         }
 
         abrirModal();
+        
         formik.resetForm();
+        console.log("Antes de resetear:", formik.values);
       } catch (error) {
         console.log(error);
       }
@@ -169,25 +172,25 @@ const currencies2 = [
   const cerrarModal = () => {
     setModalAbierto(false);
     formik.resetForm(); // Esto restablecerá el formulario a sus valores iniciales.
+    console.log("despue de resetear:", formik.values);
   }
 
 
   return (
     <>
-   
-    <Registros />
-    {/* <Navegador /> */}
-  
-      
       <Typography
-        variant="h4"
-        component="h4"
-        color="blue"
-        align="center"
-        padding={"10px"}
-        marginTop={10}
+      
+      align="center"
+      padding={"10px"}
+      sx={{
+        fontSize: '2rem', 
+        fontWeight: 'bold',
+        color:"#27496D", 
+
+      }}
+        
       >
-        Formulario de registro usuario
+       Completar <br /> Formulario de registro usuario
       </Typography>
       <Box
         sx={{
@@ -731,16 +734,24 @@ const currencies2 = [
             </Box>
           </Modal>
 
-          <IconButton
-            href="/listarusuarios"
+          <Button
+            href="Listados"
+            // href="/listarmaterias"
             variant="contained"
             type="submit"
             edge="start"
             aria-label="menu"
-            sx={{ width: 300, mt: 3 }}
+            sx={{width: 300,
+              mt: 3,
+              backgroundColor: '#27496D', // Color de fondo
+              borderRadius: "0.5rem",
+              '&:hover': {
+                backgroundColor: '#00A8CC'
+              }
+              }}
           >
-            Ver todos los usuarios
-          </IconButton>
+            Ver Todos los Usuarios. 
+          </Button>
         </Grid>
       </Box>
     </>

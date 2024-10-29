@@ -1,25 +1,29 @@
-import { BrowserRouter, Routes, Route, Outlet, Navigate  } from 'react-router-dom';
-import Login from './pages/Login';
-import Registrar from './pages/Registrar';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
+import Login from "./pages/Login";
+import Registrar from "./pages/Registrar";
 import React, { useEffect } from "react";
-import Home from './pages/Home';
-import CargarMaterias from './pages/CargarMateria';
-import UserTable from './components/ModalListar/ListarUsuarios';
-import ModalEdicion from './components/ModalEdicion/ModalEdicion';
-import MateriasTable from './components/ModalListar/ListarMaterias';
-import CargarCarrera from './pages/CargarCarrera';
-import CarrerasTable from './components/ModalListar/ListarCarrera';
-import Registros from './pages/Registros';
-import Navegador from './components/Navegador';
-import Listados from './pages/Listados';
-import Home2 from './pages/Home2';
-import  Login2 from "./pages/login/Login2";
+import Home from "./pages/Home";
+import CargarMaterias from "./pages/CargarMateria";
+import UserTable from "./components/ModalListar/ListarUsuarios";
+import ModalEdicion from "./components/ModalEdicion/ModalEdicion";
+import MateriasTable from "./components/ModalListar/ListarMaterias";
+import CargarCarrera from "./pages/CargarCarrera";
+import CarrerasTable from "./components/ModalListar/ListarCarrera";
+import Registros from "./pages/Registros";
+import Navegador from "./components/Navegador";
+import Listados from "./pages/Listados";
+import Home2 from "./pages/Home2";
+import Login2 from "./pages/login/Login2";
 
 function LayoutWithNav() {
   return (
     <>
-    {/* <Nav /> */}
-       {/* <Navegador />  */}
       <Outlet /> {/* renderiza los componentes hijos */}
     </>
   );
@@ -29,8 +33,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-         {/* Ruta que redirige la raíz a /home */}
-         <Route path="/" element={<Home/>} />
+        {/* Ruta que redirige la raíz a /home */}
+        <Route path="/" element={<Home />} />
         {/* Ruta para el Login sin el Navegador */}
         <Route path="/login" element={<Login />} />
         <Route path="/login2" element={<Login2 />} />

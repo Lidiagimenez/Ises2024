@@ -4,7 +4,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
-import * as jwt_decode from 'jwt-decode';
+import { jwtDecode } from "jwt-decode";
 
 const Login2 = () => {
     const navigate = useNavigate();
@@ -31,7 +31,7 @@ const Login2 = () => {
       validationSchema: validationSchema,
       onSubmit: async (values) => { 
         try {
-          const response = await axios.post("http://localhost:3000/api/v1/Home2", {
+          const response = await axios.post("http://localhost:3000/api/v1/autentificacion/login", {
             username: values.username,
             password: values.password,
           });
@@ -39,7 +39,7 @@ const Login2 = () => {
           if (response.status === 200) {
             const { access_token, refresh_token } = response.data; 
             
-            const accessPayload = jwt_decode(access_token);
+            const accessPayload = jwtDecode(access_token);
             const userId = accessPayload.userId;
             const userType = accessPayload.userType;
             const userName = accessPayload.userName
@@ -52,7 +52,7 @@ const Login2 = () => {
             localStorage.setItem('userName', userName);
       
             if (userType === 1) {
-              navigate("/adminHome");
+              navigate("/Home2");
             } else if (userType === 2) {
               navigate("/Home");
             }
@@ -74,7 +74,15 @@ const Login2 = () => {
     };
   
     return (
-      <Container maxWidth="sm">
+      <Container maxWidth="lg"
+      sx={{
+        bgcolor: '#2b4e84',
+        borderRadius: 2, // Bordes redondeados
+        border: '5px solid white', // Borde blanco
+        boxShadow: 7, // Sombra
+        padding: 2, // Espaciado interno
+      }}
+    >
         <Grid
           container
           direction="column"
@@ -86,7 +94,7 @@ const Login2 = () => {
             <Paper sx={{ padding: "0.5em", borderRadius: "0.5em" }}>
               <Avatar
                 alt="Remy Sharp"
-                src="/src/assets/images/LOGO150.png"
+                src="/src/assets/LOGO150.png"
                 sx={{ width: 100, height: 100, margin: "auto", mb: 2 }}
               />
               <Typography variant="h4" sx={{ mt: 1, mb: 1 }}>
@@ -139,6 +147,7 @@ const Login2 = () => {
                   >
                     Ingresar
                   </Button>
+                  
                   {loginError && (
                     <Typography variant="body2" color="error">
                       {loginError}

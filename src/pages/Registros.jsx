@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, CardContent, Button, Typography, Box, Container } from '@mui/material'; 
-import Nav from './nav';
+import Nav from './Nav';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SchoolIcon from '@mui/icons-material/School';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
@@ -73,26 +73,29 @@ const Registros = () => {
     <Container 
       sx={{ 
         display: 'flex', 
-        minHeight: '100rem',
-        minWidth:'100rem', 
-        borderRadius:'3rem',
-        background: 'linear-gradient(135deg, #0C7B93, #27496D)',
-        // backgroundColor: '#27496D',
-        // // padding: '20px',
+        minHeight: '100vh',
+        backgroundColor: '#C1DADF',
+        padding: '0',
       }}
     >
-      <Nav /> 
-      <Box sx={{ flexGrow: 1, marginTop:'2rem'  }}>
+      {/* Nav con ancho fijo para evitar superposición */}
+      <Box sx={{ width: '240px', flexShrink: 0 }}>
+        <Nav />
+      </Box>
+      
+      {/* Contenedor principal que ocupa el espacio restante */}
+      
+      <Box sx={{ flexGrow: 1, padding: '2rem' }}>
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'space-around',
+            // justifyContent: 'space-around',
+            alignItems:'center',
             flexWrap: 'wrap',
             gap: '20px',
+            // background:'red'
           }}
         >
-
-          {/* contenedor de card */}
           <Box sx={cardContainerStyle('#27496D')}>
             <Card sx={cardStyle}>
               <Box sx={numberTagStyle('#00A8CC')}>01</Box>
@@ -150,7 +153,7 @@ const Registros = () => {
             marginTop: '20px',
             backgroundColor: '#FFFFFF',
             borderRadius: '2rem',
-            padding: '20px',
+            // padding: '20px',
             boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
             height: 'auto',
             display: 'flex',

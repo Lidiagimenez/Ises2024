@@ -36,7 +36,7 @@ const Nav = () => {
 
   const manejarCerrarSesion = () => {
     // Lógica para cerrar sesión aquí
-    navigate("/login"); // Redirige a la página de inicio de sesión
+    navigate("/login2"); // Redirige a la página de inicio de sesión
   };
 
   return (

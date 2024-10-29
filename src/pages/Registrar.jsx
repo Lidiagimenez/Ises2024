@@ -19,7 +19,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
 import Registros from "./Registros";
 import Home2 from "./Home2";
-import Nav from "./nav";
 function Registrar() {
 const currencies = [
   { value: "1", label: "Administrador" },
@@ -94,23 +93,25 @@ const currencies2 = [
       id_tipo_usuario: Yup.number().required("defina tipo de Usuario"),
       id_estado_usuario: Yup.number().required("defina estado de usuario"),
       alta_baja: Yup.number(1).required("ingrese alt"),
-  
-      // Validaciones condicionales
-      legajo: Yup.string().when("id_tipo_usuario", {
-        is: (id_tipo_usuario) => id_tipo_usuario === '3', // Consideramos id_tipo_usuario como número
-        then: () => Yup.string().required("Legajo es requerido"),
-        otherwise: () => Yup.string(),
-      }),
-      fecha_inscripcion: Yup.date().when("id_tipo_usuario", {
-        is: (id_tipo_usuario) => id_tipo_usuario === '3', // Número 3 en lugar de string "3"
-        then: () => Yup.date().required("Fecha de inscripción es requerida"),
-        otherwise: () => Yup.date(),
-      }),
-      id_carrera: Yup.number().when("id_tipo_usuario", {
-        is: (id_tipo_usuario) => id_tipo_usuario === '3',
-        then: () => Yup.number().required("Carrera es requerida"),
-        otherwise: () => Yup.number(),
-      }),
+  // Validaciones condicionales
+legajo: Yup.string().when("id_tipo_usuario", {
+  is: (id_tipo_usuario) => {
+    console.log("Tipo de usuario:", id_tipo_usuario);
+    return id_tipo_usuario === 3; // Validar si es 3
+  },
+  then: () => Yup.string().required("Legajo es requerido"),
+  otherwise: () => Yup.string(),
+}),
+fecha_inscripcion: Yup.date().when("id_tipo_usuario", {
+  is: (id_tipo_usuario) => id_tipo_usuario === 3, // Comparar con número
+  then: () => Yup.date().required("Fecha de inscripción es requerida"),
+  otherwise: () => Yup.date(),
+}),
+id_carrera: Yup.number().when("id_tipo_usuario", {
+  is: (id_tipo_usuario) => id_tipo_usuario === 3, // Comparar con número
+  then: () => Yup.number().required("Carrera es requerida"),
+  otherwise: () => Yup.number(),
+}),
 
     }),
     onSubmit: async (data) => {
@@ -142,7 +143,7 @@ const currencies2 = [
           respuesta.data.data.id_usuario
         );
 
-        if (data.id_tipo_usuario === "3") {
+        if (data.id_tipo_usuario === 3) {
           // Si es un alumno, inserta el legajo en la tabla de alumnos
 
           await axios.post("http://localhost:3000/api/v1/alumnos", {
@@ -547,110 +548,84 @@ const currencies2 = [
               </ThemeProvider>
             )}
           </div>
-          <div // LEGAJO
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <TextField
-              type="text"
-              label="Ingrese numero legajo"
-              variant="outlined"
-              sx={{ width: 300, mt: 3, mx: 1 }}
-              name="legajo"
-              onChange={formik.handleChange}
-              error={!!formik.errors.legajo}
-              style={{
-                display:
-                  formik.values.id_tipo_usuario === "3" ? "block" : "none",
-              }}
-            />
-
-            {formik.errors.legajo && formik.values.id_tipo_usuario === 3 && (
-              <ThemeProvider theme={theme}>
-                <div
-                  style={{
-                    color: theme.palette.error.main,
-                    fontSize: "12px",
-                  }}
-                >
-                  {formik.errors.legajo}
-                </div>
-              </ThemeProvider>
-            )}
-          </div>
-          <div // Fecha Inscripcion
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-            }}
-          >
-            <TextField
-              type="date"
-              label="Ingrese fecha inscripción"
-              variant="outlined"
-              sx={{ width: 300, mt: 3, mx: 1 }}
-              name="fecha_inscripcion"
-              onChange={formik.handleChange}
-              error={!!formik.errors.legajo}
-              style={{
-                display:
-                  formik.values.id_tipo_usuario === "3" ? "block" : "none",
-              }}
-              InputProps={{
-                startAdornment: <SearchIcon />,
-              }}
-            />
-
-            {formik.errors.fecha_inscripcion &&
-              formik.values.id_tipo_usuario === 3 && (
-                <ThemeProvider theme={theme}>
-                  <div
-                    style={{
-                      color: theme.palette.error.main,
-                      fontSize: "12px",
-                    }}
-                  >
-                    {formik.errors.fecha_inscripcion}
-                  </div>
-                </ThemeProvider>
-              )}
-          </div>
-
-          {/* //CARRERA */}
-
           <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <TextField
-          type="number"
-          select
-          label="Carrera"
-          variant="outlined"
-          sx={{ width: 300, mt: 3 }}
-          name="id_carrera"
-          onChange={formik.handleChange}
-          error={!!formik.errors.id_carrera}
-          style={{
-            display: formik.values.id_tipo_usuario === "3" ? "block" : "none",
-          }}
-        >
-          {carreras.map((carrera) => (
-            <MenuItem key={carrera.id_carrera} value={carrera.id_carrera}>
-              {carrera.nombre}
-            </MenuItem>
-          ))}
-        </TextField>
-
-        {formik.errors.id_carrera && formik.values.id_tipo_usuario === "3" && (
-          <ThemeProvider theme={theme}>
-            <div style={{ color: theme.palette.error.main, fontSize: "12px" }}>
-              {formik.errors.id_carrera}
-            </div>
-          </ThemeProvider>
-        )}
+  {/* LEGAJO */}
+  <TextField
+    type="text"
+    label="Ingrese número de legajo"
+    variant="outlined"
+    sx={{ width: 300, mt: 3, mx: 1 }}
+    name="legajo"
+    onChange={formik.handleChange}
+    error={!!formik.errors.legajo && formik.touched.legajo}
+    style={{
+      display: formik.values.id_tipo_usuario === "3" ? "block" : "none",
+    }}
+  />
+  {formik.errors.legajo && formik.touched.legajo && (
+    <ThemeProvider theme={theme}>
+      <div style={{ color: theme.palette.error.main, fontSize: "12px" }}>
+        {formik.errors.legajo}
       </div>
+    </ThemeProvider>
+  )}
+</div>
+
+<div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+  {/* Fecha Inscripcion */}
+  <TextField
+    type="date"
+    label="Ingrese fecha de inscripción"
+    variant="outlined"
+    sx={{ width: 300, mt: 3, mx: 1 }}
+    name="fecha_inscripcion"
+    onChange={formik.handleChange}
+    error={!!formik.errors.fecha_inscripcion && formik.touched.fecha_inscripcion}
+    style={{
+      display: formik.values.id_tipo_usuario === "3" ? "block" : "none",
+    }}
+    InputProps={{
+      startAdornment: <SearchIcon />,
+    }}
+  />
+  {formik.errors.fecha_inscripcion && formik.touched.fecha_inscripcion && (
+    <ThemeProvider theme={theme}>
+      <div style={{ color: theme.palette.error.main, fontSize: "12px" }}>
+        {formik.errors.fecha_inscripcion}
+      </div>
+    </ThemeProvider>
+  )}
+</div>
+
+{/* CARRERA */}
+<div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+  <TextField
+    select
+    label="Carrera"
+    variant="outlined"
+    sx={{ width: 300, mt: 3 }}
+    name="id_carrera"
+    onChange={formik.handleChange}
+    error={!!formik.errors.id_carrera && formik.touched.id_carrera}
+    style={{
+      display: formik.values.id_tipo_usuario === "3" ? "block" : "none",
+    }}
+  >
+    {carreras.map((carrera) => (
+      <MenuItem key={carrera.id_carrera} value={carrera.id_carrera}>
+        {carrera.nombre}
+      </MenuItem>
+    ))}
+  </TextField>
+
+  {formik.errors.id_carrera && formik.touched.id_carrera && (
+    <ThemeProvider theme={theme}>
+      <div style={{ color: theme.palette.error.main, fontSize: "12px" }}>
+        {formik.errors.id_carrera}
+      </div>
+    </ThemeProvider>
+  )}
+</div>
 
           <div // ESTADO USUARIO
             style={{

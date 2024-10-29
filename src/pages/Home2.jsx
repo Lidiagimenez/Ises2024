@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react"; 
 import { Link } from "react-router-dom";
 import { HiOutlineBars3 } from "react-icons/hi2";
 import Box from "@mui/material/Box";
@@ -12,13 +12,35 @@ import ListIcon from "@mui/icons-material/List";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import bien from '../assets/bien.svg';
 import LogoutIcon from "@mui/icons-material/Logout";
+
 const manejarCerrarSesion = () => {
-  // Lógica para cerrar sesión aquí
-  navigate("/login"); // Redirige a la página de inicio de sesión
+  localStorage.removeItem("access_token");
+  localStorage.removeItem("refresh_token");
+  localStorage.removeItem("userId");
+  localStorage.removeItem("userType");
+  localStorage.removeItem("userName");
+  window.location.href = "/login2";
 };
 
 const Home2 = () => {
   const [abrirMenu, setAbrirMenu] = useState(true);
+
+  const manejarResize = () => {
+    if (window.innerWidth < 519) {
+      setAbrirMenu(false);
+    } else {
+      setAbrirMenu(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", manejarResize);
+    manejarResize();
+
+    return () => {
+      window.removeEventListener("resize", manejarResize);
+    };
+  }, []);
 
   const opcionesMenu = [
     {
@@ -52,12 +74,11 @@ const Home2 = () => {
           backgroundColor: '#27496D', 
           transition: 'width 0.3s ease',
           overflow: 'hidden',
-          zIndex: 1, /* Z-index más bajo para que quede debajo del contenido principal */
+          zIndex: 1, 
           boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", 
           borderRadius: '40px 40px 40px 20px',
         }}
       >
-        {/* Botón para abrir/cerrar el menú */}
         <Box 
           sx={{ 
             display: 'flex', 
@@ -65,7 +86,6 @@ const Home2 = () => {
             height: '64px', 
             padding: '0 16px',
             backgroundColor: '#00A8CC',
-           
           }}
         >
           <ListItemButton onClick={() => setAbrirMenu(!abrirMenu)}>
@@ -75,7 +95,6 @@ const Home2 = () => {
           </ListItemButton>
         </Box>
 
-        {/* Opciones del menú */}
         <List sx={{ padding: "0rem" }}>
           {opcionesMenu.map((item) => (
             <ListItem key={item.text} disablePadding>
@@ -108,48 +127,45 @@ const Home2 = () => {
                 />
               </ListItemButton>
             </ListItem>
-            
           ))}
         </List>
-        {/* Botón de Cerrar Sesión */}
+
         <ListItem disablePadding>
-            <ListItemButton onClick={manejarCerrarSesion}>
-              <ListItemIcon sx={{ color: '#ffffff' }}>
-                <LogoutIcon fontSize="large" />
-              </ListItemIcon>
-              <ListItemText
-                primary="Cerrar "
-                sx={{
-                  color: '#ffffff',
-                  opacity: abrirMenu ? 1 : 0,
-                  transition: 'opacity 0.3s',
-                  fontSize: '1.2rem',
-                }}
-              />
-            </ListItemButton>
-          </ListItem>
+          <ListItemButton onClick={manejarCerrarSesion}>
+            <ListItemIcon sx={{ color: '#ffffff' }}>
+              <LogoutIcon fontSize="large" />
+            </ListItemIcon>
+            <ListItemText
+              primary="Cerrar "
+              sx={{
+                color: '#ffffff',
+                opacity: abrirMenu ? 1 : 0,
+                transition: 'opacity 0.3s',
+                fontSize: '1.2rem',
+              }}
+            />
+          </ListItemButton>
+        </ListItem>
       </Box>
-      
 
       {/* Contenido sobrepuesto a la derecha del navbar */}
       <Box
         sx={{
-          marginLeft: abrirMenu ? '250px' : '80px', /* Ajustar espacio al abrir/cerrar menú */
-          width: 'calc(112rem - 80px)', /* Resto del espacio para el contenido */
+          marginLeft: abrirMenu ? '250px' : '80px', // Ajuste de marginLeft según el estado del menú
+          width: 'calc(100% - (abrirMenu ? 250 : 80)px)', // Asegura que el ancho sea dinámico
           padding: '20px',
-          backgroundColor: '#C1DADF', /* Fondo blanco para simular la superposición */
+          backgroundColor: '#C1DADF', 
           display: 'flex',
           flexDirection: 'row',
           justifyContent: 'space-between', 
           alignItems: 'center',
           height: '100%',
-          borderRadius: '30px', /* Bordes redondeados */
-          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', /* Sombra */
-          zIndex: '2', /* Z-index más alto para que se vea sobre el navbar */
+          borderRadius: '30px', 
+          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', 
+          zIndex: '2', 
           position: 'relative',
         }}
       >
-        {/* Contenedor de texto a la izquierda */}
         <Box sx={{ width: '30%', padding: '20px' }}>
           <h1 style={{ color: '#27496D', fontSize: '3rem', fontWeight: 'bold' }}>
             Bienvenido a ISES Gestión
@@ -160,17 +176,15 @@ const Home2 = () => {
           </p>
         </Box>
 
-        {/* Espacio para la imagen a la derecha */}
         <Box
           sx={{
-            width: '80%',
+            width: '70%', // Ajusta el ancho según sea necesario
             height: '100%', 
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
           }}
         >
-          {/* Coloca aquí la imagen */}
           <img src={bien} alt="Gestión" style={{ width: '100%', height: 'auto' }} />
         </Box>
       </Box>

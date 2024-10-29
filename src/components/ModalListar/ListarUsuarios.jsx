@@ -1,8 +1,8 @@
-import * as React from "react";
+import * as React from "react"; 
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Button, Container, MenuList } from "@mui/material";
+import { Button, Container } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModalEdicion from "../ModalEdicion/ModalEdicion";
 import ModalBorrarUsuario from "../ModalBorrar/ModalBorrarUsuario";
@@ -42,22 +42,6 @@ function UserTable() {
     2: "Inactivo",
   };
 
-  const handleRadioChange = (e) => {
-    const newValue = e.target.value;
-    setEditedUserData({
-      ...editedUserData,
-      id_tipo_usuario: newValue,
-    });
-  };
-
-  const handleRadioChange2 = (e) => {
-    const newValue = e.target.value;
-    setEditedUserData({
-      ...editedUserData,
-      id_estado_usuario: newValue,
-    });
-  };
-
   const listado = async () => {
     try {
       const respuesta = await axios.get("http://localhost:3000/api/v1/users");
@@ -72,30 +56,30 @@ function UserTable() {
   }, []);
 
   const columns = [
-    { field: "id_usuario", headerName: "ID", width: 100 },
-    { field: "dni", headerName: "DNI", width: 100 },
-    { field: "nombre", headerName: "Nombre", width: 100 },
-    { field: "apellido", headerName: "Apellido", width: 100 },
-    { field: "direccion", headerName: "Direccion", width: 100 },
-    { field: "correo1", headerName: "Correo 1", width: 100 },
-    { field: "telefono1", headerName: "Teléfono 1", width: 100 },
-    { field: "fecha_nacimiento", headerName: "Fecha Nacimiento", width: 100 },
+    { field: "id_usuario", headerName: "ID", width: 80 },
+    { field: "dni", headerName: "DNI", width: 80 },
+    { field: "nombre", headerName: "Nombre", width: 80 },
+    { field: "apellido", headerName: "Apellido", width: 80 },
+    { field: "direccion", headerName: "Direccion", width: 80 },
+    { field: "correo1", headerName: "Correo 1", width: 80 },
+    { field: "telefono1", headerName: "Teléfono 1", width: 80 },
+    { field: "fecha_nacimiento", headerName: "Fecha Nacimiento", width: 80 },
     {
       field: "id_tipo_usuario",
       headerName: "Tipo Usuario",
-      width: 100,
+      width: 80,
       valueGetter: (params) => tipoUsuarioMap[params.row.id_tipo_usuario] || "",
     },
     {
       field: "id_estado_usuario",
       headerName: "Estado Usuario",
-      width: 90,
+      width: 70,
       valueGetter: (params) => estadoUsuarioMap[params.row.id_estado_usuario] || "",
     },
     {
       field: "actions", 
       headerName: "Acciones", 
-      width: 200, 
+      width: 150, 
       renderCell: (params) => (
         <div>
           <Button
@@ -169,24 +153,18 @@ function UserTable() {
   };
 
   const customLocaleText = {
-
     footerPaginationRowsPerPage: "Filas por página:",
-
-       // Traducciones del panel de filtro
-  filterPanelColumns: "Columnas",
-  filterPanelOperator: "Operador",
-  filterPanelInputLabel: "Valor",
-  filterPanelInputPlaceholder: "Filtrar valor",
-    // Traducción de las opciones en el menú de columnas
-    columnMenuLabel: "Menú",  // Texto del menú de las columnas
-    columnMenuShowColumns: "Mostrar columnas",  // Mostrar columnas
-    columnMenuFilter: "Filtrar",  // Filtrar
-    columnMenuHideColumn: "Ocultar columna",  // Ocultar columna
-    columnMenuUnsort: "Quitar orden",  // Quitar orden
-    columnMenuSortAsc: "Ordenar ASC",  // Ordenar ascendente
-    columnMenuSortDesc: "Ordenar DESC",  // Ordenar descendente
-
-
+    filterPanelColumns: "Columnas",
+    filterPanelOperator: "Operador",
+    filterPanelInputLabel: "Valor",
+    filterPanelInputPlaceholder: "Filtrar valor",
+    columnMenuLabel: "Menú",
+    columnMenuShowColumns: "Mostrar columnas",
+    columnMenuFilter: "Filtrar",
+    columnMenuHideColumn: "Ocultar columna",
+    columnMenuUnsort: "Quitar orden",
+    columnMenuSortAsc: "Ordenar ASC",
+    columnMenuSortDesc: "Ordenar DESC",
     toolbarExport: "Exportar",
     toolbarColumns: "Columnas",
     toolbarFilters: "Filtros",
@@ -198,22 +176,18 @@ function UserTable() {
     columnsPanelHideAllButton: "Ocultar todo",
     toolbarExportCSV: "Exportar CSV",
     toolbarExportPrint: "Imprimir",
-
-     // Operaciones de filtro
-  filterOperatorContains: "Contiene",
-  filterOperatorEquals: "Igual a",
-  filterOperatorStartsWith: "Empieza con",
-  filterOperatorEndsWith: "Termina con",
-  filterOperatorIs: "Es",
-  filterOperatorNot: "No es",
-  filterOperatorAfter: "Después de",
-  filterOperatorOnOrAfter: "En o después de",
-  filterOperatorBefore: "Antes de",
-  filterOperatorOnOrBefore: "En o antes de",
-  filterOperatorIsEmpty: "Está vacío",
-  filterOperatorIsNotEmpty: "No está vacío",
-
-  
+    filterOperatorContains: "Contiene",
+    filterOperatorEquals: "Igual a",
+    filterOperatorStartsWith: "Empieza con",
+    filterOperatorEndsWith: "Termina con",
+    filterOperatorIs: "Es",
+    filterOperatorNot: "No es",
+    filterOperatorAfter: "Después de",
+    filterOperatorOnOrAfter: "En o después de",
+    filterOperatorBefore: "Antes de",
+    filterOperatorOnOrBefore: "En o antes de",
+    filterOperatorIsEmpty: "Está vacío",
+    filterOperatorIsNotEmpty: "No está vacío",
   };
 
   return (
@@ -222,7 +196,7 @@ function UserTable() {
         variant="h5"
         sx={{
           marginTop: '3rem',
-          fontSize: '2rem',
+          fontSize: '1.5rem', // Cambié el tamaño de fuente
           fontWeight: 'bold',
           color: "#27496D",
           textAlign: 'center',
@@ -235,9 +209,8 @@ function UserTable() {
         display: "flex", 
         justifyContent: "center",
         overflow: "hidden", 
-       }}
-        >
-        <div style={{ height: '80rem', 
+       }}>
+        <div style={{ height: '50rem', // Cambié la altura de la grilla
           width: "100%" }}>
           <DataGrid
             rows={users.filter((user) => user.alta_baja === 1)}
@@ -282,9 +255,6 @@ function UserTable() {
             handleClose={() => setIsEditModalOpen(false)}
             editedUserData={editedUserData}
             handleSaveEdit={handleSaveEdit}
-            handleEditModalClose={handleEditModalClose}
-            handleRadioChange={handleRadioChange}
-            handleRadioChange2={handleRadioChange2}
             setEditedUserData={setEditedUserData}
           />
 
@@ -293,7 +263,7 @@ function UserTable() {
             open={isEditModa2Open}
             handleClose={() => setIsEditModa2Open(false)}
             handleSaveDelete={handleSaveDelete}
-            handleEditModalClose={handleEditModalClose}
+            selectUserDelete={selectUserDelete}
           />
         </div>
       </Container>

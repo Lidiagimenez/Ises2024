@@ -66,24 +66,47 @@ const CargarMaterias = () => {
     setModalAbierto(false);
     formik.resetForm(); // Esto restablecerá el formulario a sus valores iniciales.
   };
+  const numberTagStyle = (color) => ({
+    position: 'absolute',
+    // top: '-20px',
+    backgroundColor: color,
+    color: '#fff',
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '18px',
+    fontWeight: 'bold',
+  });
 
   return (
     <>
-    <Registros />
    
-     {/* <Navegador/> */}
-      <Typography variant="h4" component="h4" color="blue" align="center"marginTop={"100px"}>
-        Formulario de registro Materias
+      <Box sx={numberTagStyle('#27496D')}>03</Box>
+      <Typography
+        align="center"
+        padding={"2rem"}
+        sx={{
+          fontSize: '1.5rem', 
+          fontWeight: 'bold',
+          color:"#27496D", 
+  
+        }}
+       >
+        Completar Formulario de registro Materias
       </Typography>
-      <Box sx={{ mt: 10 }} component="form" onSubmit={formik.handleSubmit}>
+      <Box  component="form" onSubmit={formik.handleSubmit}>
         <Grid
         container
         direction="column"
         justifyContent="center"
         alignItems="center"
-        sx={{ mt: 10 }}
+        
         >
             <TextField
+            value={formik.values.nombre}
             type="text"
             label="Nombre"
             variant="outlined"
@@ -95,6 +118,7 @@ const CargarMaterias = () => {
             helperText={formik.touched.nombre && formik.errors.nombre} // Muestra el mensaje de error
           />
           <TextField
+            value={formik.values.id_tipo_materia}
             type="number"
             select
             label="Tipo Materia"
@@ -110,6 +134,7 @@ const CargarMaterias = () => {
           ))}
           </TextField>
           <TextField
+            value={formik.values.id_estado_materia}
             type="number"
             select
             label="Estado Materia"
@@ -126,7 +151,7 @@ const CargarMaterias = () => {
           </TextField>
 
 
-<Button variant="contained" type="submit" sx={{ width: 300, mt: 3, mx:1 }} disabled={!formik.isValid}>
+            <Button variant="contained" type="submit" sx={{ width: 300, mt: 3, mx:1 }} disabled={!formik.isValid}>
               Enviar Formulario
             </Button>
          
@@ -142,20 +167,24 @@ const CargarMaterias = () => {
               </Box>
           </Modal>
 
-
-
-
-
-            <IconButton
-            href="/listarmaterias"
+            <Button
+            href="Listados"
+            // href="/listarmaterias"
             variant="contained"
             type="submit"
             edge="start"
             aria-label="menu"
-            sx={{ width: 300, mt: 3 }}
+            sx={{width: 300,
+              mt: 3,
+              backgroundColor: '#27496D', // Color de fondo
+              borderRadius: "0.5rem",
+              '&:hover': {
+                backgroundColor: '#00A8CC'
+              }
+              }}
           >
             Ver Todas las Materias. 
-          </IconButton>
+          </Button>
         </Grid>               
        
       </Box>

@@ -1,6 +1,6 @@
-import React from "react";
-import { Modal, Button } from "@mui/material";
-// import UserTable from  "./ListarUsuarios";
+import React, { useState, useEffect } from "react";
+import { Modal, Button, Grid, TextField, FormControlLabel, Radio, RadioGroup, FormLabel, MenuItem, Select, InputLabel, FormControl } from "@mui/material";
+import axios from 'axios';
 
 function ModalEdicion(props) {
   const {
@@ -9,25 +9,56 @@ function ModalEdicion(props) {
     editedUserData,
     handleSaveEdit,
     handleEditModalClose,
-    handleRadioChange,
-    handleRadioChange2,
-    setSelectedUser,
     setEditedUserData,
-  } = props;
+  } = props
+  const [carreras, setCarreras] = useState([]);
+
   const modalStyles = {
     position: "absolute",
-    flexDirection: "column",
-    margin: "20px",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "500px",
-
+    width: "90%",
+    maxWidth: "600px",
     backgroundColor: "white",
     padding: "20px",
     borderRadius: "8px",
     boxShadow: "10px 10px 10px rgba(0, 0, 0, 0.2)",
   };
+
+  useEffect(() => {
+    axios.get("http://localhost:3000/api/v1/carreras") 
+      .then((response) => {
+        setCarreras(response.data);  
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  const handleCarreraChange = (event) => {
+    setEditedUserData({
+      ...editedUserData,
+      id_carrera: event.target.value, // Actualiza el campo de carrera con el valor seleccionado
+    });
+  };
+
+
+  // Función para manejar cambios en los radio buttons de tipo de usuario
+  const handleTipoUsuarioChange = (event) => {
+    setEditedUserData({
+      ...editedUserData,
+      id_tipo_usuario: parseInt(event.target.value),
+    });
+  };
+
+  // Función para manejar cambios en los radio buttons de estado de usuario
+  const handleEstadoUsuarioChange = (event) => {
+    setEditedUserData({
+      ...editedUserData,
+      id_estado_usuario: parseInt(event.target.value),
+    });
+  };
+  
+
   return (
     <Modal
       open={open}
@@ -35,370 +66,242 @@ function ModalEdicion(props) {
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
     >
-      <div className="edit-modal" style={modalStyles}>
-        <h2>Editar Usuario</h2>
+      <div style={modalStyles}>
         <form>
-          <div>
-            <label htmlFor="dni">DNI:</label>
-            <input
-              type="number"
-              id="dni"
-              name="dni"
-              value={editedUserData.dni}
-              onChange={(e) =>
-                setEditedUserData({
-                  ...editedUserData,
-                  dni: e.target.value,
-                })
-              }
-              style={{
-                margin: "10px",
-                textAlign: "center",
-              }}
-            />
-          </div>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="DNI"
+                type="number"
+                fullWidth
+                value={editedUserData.dni || ""}
+                onChange={(e) =>
+                  setEditedUserData({
+                    ...editedUserData,
+                    dni: e.target.value,
+                  })
+                }
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Nombre"
+                type="text"
+                fullWidth
+                value={editedUserData.nombre || ""}
+                onChange={(e) =>
+                  setEditedUserData({
+                    ...editedUserData,
+                    nombre: e.target.value,
+                  })
+                }
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Apellido"
+                type="text"
+                fullWidth
+                value={editedUserData.apellido || ""}
+                onChange={(e) =>
+                  setEditedUserData({
+                    ...editedUserData,
+                    apellido: e.target.value,
+                  })
+                }
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Dirección"
+                type="text"
+                fullWidth
+                value={editedUserData.direccion || ""}
+                onChange={(e) =>
+                  setEditedUserData({
+                    ...editedUserData,
+                    direccion: e.target.value,
+                  })
+                }
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Correo 1"
+                type="email"
+                fullWidth
+                value={editedUserData.correo1 || ""}
+                onChange={(e) =>
+                  setEditedUserData({
+                    ...editedUserData,
+                    correo1: e.target.value,
+                  })
+                }
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Correo 2"
+                type="email"
+                fullWidth
+                value={editedUserData.correo2 || ""}
+                onChange={(e) =>
+                  setEditedUserData({
+                    ...editedUserData,
+                    correo2: e.target.value,
+                  })
+                }
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Teléfono 1"
+                type="number"
+                fullWidth
+                value={editedUserData.telefono1 || ""}
+                onChange={(e) =>
+                  setEditedUserData({
+                    ...editedUserData,
+                    telefono1: e.target.value,
+                  })
+                }
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Teléfono 2"
+                type="number"
+                fullWidth
+                value={editedUserData.telefono2 || ""}
+                onChange={(e) =>
+                  setEditedUserData({
+                    ...editedUserData,
+                    telefono2: e.target.value,
+                  })
+                }
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Fecha de Nacimiento"
+                type="date"
+                fullWidth
+                InputLabelProps={{ shrink: true }}
+                value={editedUserData.fecha_nacimiento || ""}
+                onChange={(e) =>
+                  setEditedUserData({
+                    ...editedUserData,
+                    fecha_nacimiento: e.target.value,
+                  })
+                }
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                label="Nacionalidad"
+                type="text"
+                fullWidth
+                value={editedUserData.nacionalidad || ""}
+                onChange={(e) =>
+                  setEditedUserData({
+                    ...editedUserData,
+                    nacionalidad: e.target.value,
+                  })
+                }
+              />
+            </Grid>
 
-          <div>
-            <label htmlFor="nombre">Nombre:</label>
-            <input
-              type="text"
-              id="nombre"
-              name="nombre"
-              value={editedUserData.nombre}
-              onChange={(e) =>
-                setEditedUserData({
-                  ...editedUserData,
-                  nombre: e.target.value,
-                })
-              }
-              style={{
-                margin: "10px",
-                textAlign: "center",
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="apellido">Apellido:</label>
-            <input
-              type="text"
-              id="apellido"
-              name="apellido"
-              value={editedUserData.apellido}
-              onChange={(e) =>
-                setEditedUserData({
-                  ...editedUserData,
-                  apellido: e.target.value,
-                })
-              }
-              style={{
-                margin: "10px",
-                textAlign: "center",
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="direccion">Dirección:</label>
-            <input
-              type="text"
-              id="direccion"
-              name="direccion"
-              value={editedUserData.direccion}
-              onChange={(e) =>
-                setEditedUserData({
-                  ...editedUserData,
-                  direccion: e.target.value,
-                })
-              }
-              style={{
-                margin: "10px",
-                textAlign: "center",
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="correo1">Correo 1:</label>
-            <input
-              type="email"
-              id="correo1"
-              name="correo1"
-              value={editedUserData.correo1}
-              onChange={(e) =>
-                setEditedUserData({
-                  ...editedUserData,
-                  correo1: e.target.value,
-                })
-              }
-              style={{
-                margin: "10px",
-                textAlign: "center",
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="correo2">Correo 2:</label>
-            <input
-              type="email"
-              id="correo2"
-              name="correo2"
-              value={editedUserData.correo2}
-              onChange={(e) =>
-                setEditedUserData({
-                  ...editedUserData,
-                  correo2: e.target.value,
-                })
-              }
-              style={{
-                margin: "10px",
-                textAlign: "center",
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="telefono1">Teléfono 1:</label>
-            <input
-              type="number"
-              id="telefono1"
-              name="telefono1"
-              value={editedUserData.telefono1}
-              onChange={(e) =>
-                setEditedUserData({
-                  ...editedUserData,
-                  telefono1: e.target.value,
-                })
-              }
-              style={{
-                margin: "10px",
-                textAlign: "center",
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="telefono2">Teléfono 2:</label>
-            <input
-              type="number"
-              id="telefono2"
-              name="telefono2"
-              value={editedUserData.telefono2}
-              onChange={(e) =>
-                setEditedUserData({
-                  ...editedUserData,
-                  telefono2: e.target.value,
-                })
-              }
-              style={{
-                margin: "10px",
-                textAlign: "center",
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="fecha_nacimiento">Fecha de Nacimiento:</label>
-            <input
-              type="date"
-              id="fecha_nacimiento"
-              name="fecha_nacimiento"
-              value={editedUserData.fecha_nacimiento}
-              onChange={(e) =>
-                setEditedUserData({
-                  ...editedUserData,
-                  fecha_nacimiento: e.target.value,
-                })
-              }
-              style={{
-                margin: "10px",
-                textAlign: "center",
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="nacionalidad">Nacionalidad:</label>
-            <input
-              type="text"
-              id="nacionalidad"
-              name="nacionalidad"
-              value={editedUserData.nacionalidad}
-              onChange={(e) =>
-                setEditedUserData({
-                  ...editedUserData,
-                  nacionalidad: e.target.value,
-                })
-              }
-              style={{
-                margin: "10px",
-                textAlign: "center",
-              }}
-            />
-          </div>
-          <div>
-            <label htmlFor="id_tipo_usuario">Tipo de Usuario:</label>
-            <input
-              type="radio"
-              id="administrador"
-              name="id_tipo_usuario"
-              value="1"
-              checked={editedUserData.id_tipo_usuario === "1"}
-              onChange={(e) => handleRadioChange(e)}
-              style={{
-                width: 20,
-                height: 20,
-                margin: "10px",
-              }}
-            />
-            <label htmlFor="administrador">Administrador</label>
-            <input
-              type="radio"
-              id="preceptor"
-              name="id_tipo_usuario"
-              value="2"
-              checked={editedUserData.id_tipo_usuario === "2"}
-              onChange={(e) => handleRadioChange(e)}
-              style={{
-                width: 20,
-                height: 20,
-              }}
-            />
-            <label htmlFor="preceptor">Preceptor</label>
-            <input
-              type="radio"
-              id="alumno"
-              name="id_tipo_usuario"
-              value="3"
-              checked={editedUserData.id_tipo_usuario === "3"}
-              onChange={(e) => handleRadioChange(e)}
-              style={{
-                width: 20,
-                height: 20,
-              }}
-            />
-            <label htmlFor="alumno">Alumno/a</label>
-          </div>
+            {/* Radio Group for Tipo de Usuario */}
+            <Grid item xs={12}>
+              <FormLabel>Tipo de Usuario</FormLabel>
+              <RadioGroup
+                row
+                value={editedUserData.id_tipo_usuario || ""}
+                onChange={handleTipoUsuarioChange}
+              >
+                <FormControlLabel value={1} control={<Radio />} label="Administrador" />
+                <FormControlLabel value={2} control={<Radio />} label="Preceptor" />
+                <FormControlLabel value={3} control={<Radio />} label="Alumno/a" />
+              </RadioGroup>
+            </Grid>
 
-          <div>
-            <label htmlFor="id_estado_usuario">Estado Usuario:</label>
-            <input
-              type="radio"
-              id="activo"
-              name="id_estado_usuario"
-              value="1"
-              checked={editedUserData.id_estado_usuario === "1"}
-              onChange={(e) => handleRadioChange2(e)}
-              style={{
-                width: 20,
-                height: 20,
-                margin: "10px",
-              }}
-            />
-            <label htmlFor="activo">Activo</label>
-            <input
-              type="radio"
-              id="inactivo"
-              name="id_estado_usuario"
-              value="2"
-              checked={editedUserData.id_estado_usuario === "2"}
-              onChange={(e) => handleRadioChange2(e)}
-              style={{
-                width: 20,
-                height: 20,
-                margin: "10px",
-              }}
-            />
-            <label htmlFor="inactivo">Inactivo</label>
-          </div>
+            {/* Radio Group for Estado Usuario */}
+            <Grid item xs={12}>
+              <FormLabel>Estado Usuario</FormLabel>
+              <RadioGroup
+                row
+                value={editedUserData.id_estado_usuario || ""}
+                onChange={handleEstadoUsuarioChange}
+              >
+                <FormControlLabel value={1} control={<Radio />} label="Activo" />
+                <FormControlLabel value={2} control={<Radio />} label="Inactivo" />
+              </RadioGroup>
+            </Grid>
 
-          <div> 
-            <label
-              htmlFor="legajo"
-              style={{
-                display:
-                  editedUserData.id_tipo_usuario === "3" ? "block" : "none",
-              }}
-            >
-              Legajo:
-            </label>
-            <input
-              type="text"
-              id="legajo"
-              name="legajo"
-              value={editedUserData.legajo}
-              onChange={(e) =>
-                setEditedUserData({
-                  ...editedUserData,
-                  legajo: e.target.value,
-                })
-              }
-              style={{
-                margin: "10px",
-                textAlign: "center",
-                display:
-                  editedUserData.id_tipo_usuario === "3" ? "block" : "none",
-              }}
-            />
-          </div>
-          <div> 
-            <label
-              htmlFor="fecha_inscripcion"
-              style={{
-                display:
-                  editedUserData.id_tipo_usuario === "3" ? "block" : "none",
-              }}
-            >
-              Fecha Inscripcion
-            </label>
-            <input
-              type="date"
-              id="fecha_inscripcion"
-              name="fecha_inscripcion"
-              value={editedUserData.fecha_inscripcion}
-              onChange={(e) =>
-                setEditedUserData({
-                  ...editedUserData,
-                  fecha_inscripcion: e.target.value,
-                })
-              }
-              style={{
-                margin: "10px",
-                textAlign: "center",
-                display:
-                  editedUserData.id_tipo_usuario === "3" ? "block" : "none",
-              }}
-            />
-          </div>
-          <div> 
-            <label
-              htmlFor="id_carrera"
-              style={{
-                display:
-                  editedUserData.id_tipo_usuario === "3" ? "block" : "none",
-              }}
-            >
-              Seleccione la Carrera
-            </label>
-            <input
-              type="number"
-              id="id_carrera"
-              name="id_carrera"
-              value={editedUserData.id_carrera}
-              onChange={(e) =>
-                setEditedUserData({
-                  ...editedUserData,
-                  id_carrera: e.target.value,
-                })
-              }
-              style={{
-                margin: "10px",
-                textAlign: "center",
-                display:
-                  editedUserData.id_tipo_usuario === "3" ? "block" : "none",
-              }}
-            />
+            {/* Conditional fields */}
+            {editedUserData.id_tipo_usuario === 3 && (
+              <>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    label="Legajo"
+                    type="text"
+                    fullWidth
+                    value={editedUserData.legajo || ""}
+                    onChange={(e) =>
+                      setEditedUserData({
+                        ...editedUserData,
+                        legajo: e.target.value,
+                      })
+                    }
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    label="Fecha Inscripción"
+                    type="date"
+                    fullWidth
+                    InputLabelProps={{ shrink: true }}
+                    value={editedUserData.fecha_inscripcion || ""}
+                    onChange={(e) =>
+                      setEditedUserData({
+                        ...editedUserData,
+                        fecha_inscripcion: e.target.value,
+                      })
+                    }
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
+                <InputLabel>Seleccione la Carrera</InputLabel>
+                <Select
+                  value={editedUserData.id_carrera || ""}
+                  onChange={handleCarreraChange}
+                >
+                  {carreras.map((carrera) => (
+                    <MenuItem key={carrera.id_carrera} value={carrera.id_carrera}>
+                      {carrera.nombre} {/* Asumiendo que la carrera tiene un campo 'nombre' */}
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+              </>
+            )}
+          </Grid>
+
+          {/* Buttons */}
+          <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "20px" }}>
+            <Button variant="contained" color="primary" onClick={handleSaveEdit} style={{ marginRight: "10px" }}>
+              Guardar
+            </Button>
+            <Button variant="outlined" onClick={handleClose}>
+              Cancelar
+            </Button>
           </div>
         </form>
-        <div>
-          <Button onClick={handleSaveEdit}>Guardar</Button>
-          <Button onClick={handleEditModalClose}>Cancelar</Button>
-        </div>
       </div>
     </Modal>
   );
 }
+
 export default ModalEdicion;

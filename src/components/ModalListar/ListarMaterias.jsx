@@ -4,13 +4,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Container, MenuList } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Navegador from "../Navegador";
+import { Box, Typography } from '@mui/material';
 // import ModalEdicion from "./ModalEdicion";
-import Typography from "@mui/material/Typography";
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import ModalEdicionMaterias from "../ModalEdicion/ModalEdicionMateria";
 import ModalBorrarMateria from "../ModalBorrar/ModalBorrarMateria";
-import Listados from "../../pages/Listados";
 
 function MateriasTable() {
   const [Materias, setMaterias] = useState([]);
@@ -186,15 +184,36 @@ function MateriasTable() {
     console.log("Materia seleccionada:", row);
   };
   
+  const numberTagStyle = (color) => ({
+    position: 'absolute',
+    // top: '-20px',
+    backgroundColor: color,
+    color: '#fff',
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '18px',
+    fontWeight: 'bold',
+  });
+
   return (
     <>
-    <Listados/>
-      {/* <Navegador /> */}
+    <Box sx={numberTagStyle('#27496D')}>03</Box>
       <Typography
-      variant="h5"
-      color=""
-      component="div"
-      sx={{ mr: 2, borderBottom: 1 ,marginTop:10}}>
+        align="center"
+        padding={"2rem"}
+        sx={{
+          mr: 2,
+          marginTop: '1rem',
+          fontSize: '2rem',
+          fontWeight: 'bold',
+          color: "#27496D",
+          textAlign: 'center', // Centra el texto
+        }}
+        >
         Listado de Materias
       </Typography>
       <Container
@@ -214,8 +233,9 @@ function MateriasTable() {
       >
         <div
           style={{
-            height: 650,
-            // width: "100%",
+            height: '25rem',
+            width: "50rem",
+            // background:'red',
             display: "flex",
             flexDirection: "column",
             alignContent: "center",
@@ -267,10 +287,10 @@ function MateriasTable() {
                   <GridToolbar
                     style={{
                       backgroundColor: "",
-                      color: "white",
-                      border: "1px solid black",
-                      padding: "5px 10px",
-                      borderRadius: "4px",
+                      color: "#ffffff",
+                      border: "0.5rem solid #27496D",
+                      // padding: "1rem 1,5rem",
+                      borderRadius: "0.5rem",
                     }}
                   />
                 </>

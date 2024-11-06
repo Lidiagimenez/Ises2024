@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Modal, Button } from "@mui/material";
-// import UserTable from  "./ListarUsuarios";
 
 function ModalEdicionCarrera(props) {
   const {
@@ -12,6 +11,7 @@ function ModalEdicionCarrera(props) {
     handleRadioChange,
     setEditedMateriaData,
   } = props;
+
   const modalStyles = {
     position: "absolute",
     flexDirection: "column",
@@ -25,6 +25,15 @@ function ModalEdicionCarrera(props) {
     borderRadius: "8px",
     boxShadow: "10px 10px 10px rgba(0, 0, 0, 0.2)",
   };
+
+  // Asegúrate de que los valores se actualicen cuando el modal se abra
+  useEffect(() => {
+    if (open) {
+      // Aquí se puede hacer cualquier validación o ajuste del estado
+      // por ejemplo, asegurándote de que editedMateriaData esté correctamente inicializado
+    }
+  }, [open]); // Solo se ejecuta cuando el modal se abre
+
   return (
     <Modal
       open={open}
@@ -41,7 +50,7 @@ function ModalEdicionCarrera(props) {
               type="text"
               id="nombre"
               name="nombre"
-              value={editedMateriaData.nombre}
+              value={editedMateriaData.nombre || ""} // Aseguramos que el campo tenga un valor por defecto
               onChange={(e) =>
                 setEditedMateriaData({
                   ...editedMateriaData,
@@ -61,8 +70,8 @@ function ModalEdicionCarrera(props) {
               id="activo"
               name="id_estado_carrera"
               value="1"
-              checked={editedMateriaData.id_estado_carrera === "1"}
-              onChange={(e) => handleRadioChange(e)}
+              checked={editedMateriaData.id_estado_carrera === "1"} // Verifica que se seleccione el valor correcto
+              onChange={handleRadioChange} // Utiliza la función pasada como prop
               style={{
                 width: 20,
                 height: 20,
@@ -76,8 +85,8 @@ function ModalEdicionCarrera(props) {
               id="inactivo"
               name="id_estado_carrera"
               value="2"
-              checked={editedMateriaData.id_estado_carrera=== "2"}
-              onChange={(e) => handleRadioChange(e)}
+              checked={editedMateriaData.id_estado_carrera === "2"} // Verifica que se seleccione el valor correcto
+              onChange={handleRadioChange} // Utiliza la función pasada como prop
               style={{
                 width: 20,
                 height: 20,
@@ -86,39 +95,6 @@ function ModalEdicionCarrera(props) {
             />
             <label htmlFor="inactivo">Inactivo</label>
           </div>
-
-          {/* <div>
-            <label htmlFor="id_estado_materia">Estado Materia:</label>
-            <input
-              type="radio"
-              id="activo"
-              name="id_estado_materia"
-              value="1"
-              checked={editedMateriaData.id_estado_materia === "1"}
-              onChange={(e) => handleRadioChange2(e)}
-              style={{
-                width: 20,
-                height: 20,
-                margin: "10px",
-              }}
-            />
-            <label htmlFor="activo">Activo</label>
-
-            <input
-              type="radio"
-              id="inactivo"
-              name="id_estado_materia"
-              value="2"
-              checked={editedMateriaData.id_estado_materia === "2"}
-              onChange={(e) => handleRadioChange2(e)}
-              style={{
-                width: 20,
-                height: 20,
-                margin: "10px",
-              }}
-            />
-            <label htmlFor="inactivo">Inactivo</label>
-          </div> */}
         </form>
 
         <div>

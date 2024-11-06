@@ -12,6 +12,7 @@ import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import { FaHome } from "react-icons/fa";
 import { Box } from '@mui/material';
 import Home2 from "./Home2";
+import Login2 from "./login/Login2";
 
 export default function Login() {
   return (
@@ -19,7 +20,7 @@ export default function Login() {
       <Home2/> 
       <Typography
         variant="h6" // Tamaño texto
-        onClick={() => { window.location.href = '/home2'; }} // Redirigir a la ruta Login
+        onClick={() => { window.location.href = '/Home2'; }} // Redirigir a la ruta Login
         sx={{
           color: "red",
           fontSize: "24px", // Tamaño del texto

@@ -2,14 +2,13 @@ import * as React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Button, Container, MenuList } from "@mui/material";
+import { Button, Container,Box, MenuList } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Navegador from "../Navegador";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import ModalEdicionCarrera from "../ModalEdicion/ModalEdicionCarrera"
 import Typography from "@mui/material/Typography";
 import ModalBorrarCarrera from "../ModalBorrar/ModalBorrarCarrera"
-import Listados from "../../pages/Listados";
  
 function CarrerasTable() {
   const [Carreras, setCarreras] = useState([]);
@@ -165,22 +164,40 @@ function CarrerasTable() {
     toolbarExportPrint: "Imprimir",
   };
 
+  const numberTagStyle = (color) => ({
+    position: 'absolute',
+    // top: '-20px',
+    backgroundColor: color,
+    color: '#fff',
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '18px',
+    fontWeight: 'bold',
+  });
+
   return (
     <>
-    <Listados/>
-      {/* <Navegador />  */}
-      
-      <Typography
-      variant="h5"
-      color=""
-      component="div"
-      sx={{ mr: 2, borderBottom: 1 ,marginTop:10}}>
+    <Box sx={numberTagStyle('#00A8CC')}>02</Box>
+    <Typography
+        variant="h5"
+        sx={{
+          marginTop: '1rem',
+          fontSize: '1.5rem',
+          fontWeight: 'bold',
+          color: "#27496D",
+          textAlign: 'center',
+        }}
+      >
         Listado de Carreras
       </Typography>
       <Container
         sx={{
           display: "flex  ",
-          marginTop: "10px",
+          marginTop: "1.5rem",
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
@@ -194,12 +211,13 @@ function CarrerasTable() {
       >
         <div
           style={{
-            height: 650,
+            height: '25rem',
             // width: "100%",
             display: "flex",
             flexDirection: "column",
             alignContent: "center",
             justifyContent: "center",
+            
           }}
         >
           <DataGrid
@@ -243,6 +261,7 @@ function CarrerasTable() {
                 console.log("dentro de elseif seleccionado");
               }
             }}
+            
             components={{
               Toolbar: () => (
                 <>
@@ -250,8 +269,8 @@ function CarrerasTable() {
                     style={{
                       backgroundColor: "",
                       color: "white",
-                      border: "1px solid black",
-                      padding: "5px 10px",
+                      border: "0.5rem solid #27496D",
+                      // padding: "5px 10px",
                       borderRadius: "4px",
                     }}
                   />

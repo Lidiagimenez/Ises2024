@@ -38,7 +38,7 @@ function ModalBorrarMateria(props){
                 <h3>¿Estas seguro de borrar la materia?</h3>
                 <div>
                     <button onClick={handleSaveDelete}>Confirmar</button>
-                    <button onClick={handleEditModalClose}>Cancelar</button>
+                    <button onClick={handleClose}>Cancelar</button>
                 </div>
             </div>
 

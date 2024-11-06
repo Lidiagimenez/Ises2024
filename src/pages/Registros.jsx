@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Card, CardContent, Button, Typography, Box, Container } from '@mui/material'; 
+<<<<<<< HEAD
 import Nav from './nav';
+=======
+import Nav from './Nav';
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SchoolIcon from '@mui/icons-material/School';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
@@ -32,6 +36,7 @@ const Registros = () => {
   };
 
   const cardStyle = {
+<<<<<<< HEAD
     m: 1, width: '250px', 
     backgroundColor: 'white', 
     borderRadius: '20px', 
@@ -46,11 +51,27 @@ const Registros = () => {
     // flexDirection: 'column',
     // alignItems: 'center',
     // justifyContent: 'center',
+=======
+    width: '220px',
+    height: '250px',
+    borderRadius: '15px',
+    backgroundColor: '#FFFFFF', 
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', 
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
   };
 
   const numberTagStyle = (color) => ({
     position: 'absolute',
+<<<<<<< HEAD
     // top: '-20px',
+=======
+    top: '-20px',
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
     backgroundColor: color,
     color: '#fff',
     width: '50px',
@@ -64,6 +85,7 @@ const Registros = () => {
   });
 
   const cardContainerStyle = (color) => ({
+<<<<<<< HEAD
      backgroundColor: color,
      padding: '0,5rem',
      borderRadius: '10px',
@@ -71,6 +93,15 @@ const Registros = () => {
      display: 'flex',
      justifyContent: 'center',
      alignItems: 'center',
+=======
+    backgroundColor: color,
+    padding: '20px',
+    borderRadius: '20px',
+    boxShadow: '0px 6px 20px rgba(0, 0, 0, 0.2)', 
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
   });
 
   return (
@@ -155,6 +186,7 @@ const Registros = () => {
         <Box
           sx={{
             marginTop: '20px',
+<<<<<<< HEAD
             backgroundColor: '#C1DADF',
             // borderRadius: '2rem',
             // padding: '20px',
@@ -164,6 +196,16 @@ const Registros = () => {
             // display: 'flex',
             // justifyContent: 'center',
             // alignItems: 'center',
+=======
+            backgroundColor: '#FFFFFF',
+            borderRadius: '2rem',
+            // padding: '20px',
+            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+            height: 'auto',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
           }}
         >
           {mostrarRegistrar && <Registrar />}

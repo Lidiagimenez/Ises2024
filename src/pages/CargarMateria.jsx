@@ -84,18 +84,31 @@ const CargarMaterias = () => {
   return (
     <>
    
+<<<<<<< HEAD
       <Box sx={numberTagStyle('#27496D')}>03</Box>
       <Typography
         align="center"
         padding={"2rem"}
         sx={{
           fontSize: '1.5rem', 
+=======
+     {/* <Navegador/> */}
+      <Typography
+        align="center"
+        padding={"10px"}
+        sx={{
+          fontSize: '2rem', 
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
           fontWeight: 'bold',
           color:"#27496D", 
   
         }}
        >
+<<<<<<< HEAD
         Completar Formulario de registro Materias
+=======
+        Completar Formulario <br /> de registro Materias
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
       </Typography>
       <Box  component="form" onSubmit={formik.handleSubmit}>
         <Grid

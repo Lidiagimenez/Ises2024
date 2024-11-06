@@ -25,6 +25,7 @@ const Nav = () => {
     {
       text: "Listados",
       icon: <ListIcon fontSize="large" />,
+<<<<<<< HEAD
       
       link: "/Listados",
       
@@ -36,6 +37,14 @@ const Nav = () => {
       link: "/Registros",
       
       
+=======
+      link: "/Listados",
+    },
+    {
+      text: "Registrar",
+      icon: <PersonAddIcon fontSize="large" />,
+      link: "/Registros",
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
     },
   ];
 
@@ -57,7 +66,11 @@ const Nav = () => {
           backgroundColor: '#27496D', 
           transition: 'width 0.3s ease',
           boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", 
+<<<<<<< HEAD
           // borderRadius: '40px 40px 40px 20px',
+=======
+          borderRadius: '40px 40px 40px 20px',
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
           overflow: 'hidden',
         }}
       >
@@ -115,6 +128,7 @@ const Nav = () => {
           
           {/* Botón de Cerrar Sesión */}
           <ListItem disablePadding>
+<<<<<<< HEAD
   <ListItemButton
     onClick={manejarCerrarSesion}
     sx={{
@@ -141,6 +155,23 @@ const Nav = () => {
     />
   </ListItemButton>
 </ListItem>
+=======
+            <ListItemButton onClick={manejarCerrarSesion}>
+              <ListItemIcon sx={{ color: '#ffffff' }}>
+                <LogoutIcon fontSize="large" />
+              </ListItemIcon>
+              <ListItemText
+                primary="Cerrar"
+                sx={{
+                  color: '#ffffff',
+                  opacity: abrirMenu ? 1 : 0,
+                  transition: 'opacity 0.3s',
+                  fontSize: '1.2rem',
+                }}
+              />
+            </ListItemButton>
+          </ListItem>
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
         </List>
       </Box>
     </Box>

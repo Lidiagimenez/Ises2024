@@ -7,6 +7,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+<<<<<<< HEAD
+=======
+import HomeIcon from "@mui/icons-material/Home";
+import ListIcon from "@mui/icons-material/List";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import LogoutIcon from "@mui/icons-material/Logout";
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
 import Typography from '@mui/material/Typography'; 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -15,11 +22,14 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SchoolIcon from '@mui/icons-material/School';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 
+<<<<<<< HEAD
 import HomeIcon from "@mui/icons-material/Home";
 import ListIcon from "@mui/icons-material/List";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LogoutIcon from "@mui/icons-material/Logout";
 
+=======
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
 import ListarUsuarios from '../components/ModalListar/ListarUsuarios';
 import ListarCarreras from '../components/ModalListar/ListarCarrera';
 import ListarMaterias from '../components/ModalListar/ListarMaterias';
@@ -33,6 +43,7 @@ const manejarCerrarSesion = () => {
 
   window.location.href = "/login2";
 };
+<<<<<<< HEAD
 
 const cardStyle = {
   m: 1,
@@ -65,6 +76,8 @@ const cardContainerStyle = (color) => ({
   justifyContent: 'center',
   alignItems: 'center',
 });
+=======
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
 
 const Listados = () => {
   const [abrirMenu, setAbrirMenu] = useState(true);
@@ -73,9 +86,27 @@ const Listados = () => {
   const [mostrarListarCarreras, setMostrarListarCarreras] = useState(false);
 
   const opcionesMenu = [
+<<<<<<< HEAD
     { text: "Inicio", icon: <HomeIcon fontSize="large" />, link: "/home2" },
     { text: "Listados", icon: <ListIcon fontSize="large" />, link: "/Listados" },
     { text: "Registros", icon: <PersonAddIcon fontSize="large" />, link: "/Registros" },
+=======
+    {
+      text: "Inicio",
+      icon: <HomeIcon fontSize="large" />,
+      link: "/home2",
+    },
+    {
+      text: "Listados",
+      icon: <ListIcon fontSize="large" />,
+      link: "/listados",
+    },
+    {
+      text: "Registrar",
+      icon: <PersonAddIcon fontSize="large" />,
+      link: "/registros",
+    },
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
   ];
 
   const handleResize = () => {
@@ -110,7 +141,12 @@ const Listados = () => {
   };
 
   return (
+<<<<<<< HEAD
     <Box sx={{ display: "flex", height: "100vh",backgroundColor: '#C1DADF',padding:'0' }}>
+=======
+    <Box sx={{ display: "flex", height: "100vh" }}>
+      {/* Navbar izquierdo */}
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
       <Box
         sx={{
           position: 'fixed',
@@ -124,9 +160,16 @@ const Listados = () => {
           overflow: 'hidden',
           zIndex: 1,
           boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", 
+<<<<<<< HEAD
           // borderRadius: '40px 40px 40px 20px',
         }}
       >
+=======
+          borderRadius: '40px 40px 40px 20px',
+        }}
+      >
+        {/* Botón para abrir/cerrar el menú */}
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
         <Box 
           sx={{ 
             display: 'flex', 
@@ -143,6 +186,10 @@ const Listados = () => {
           </ListItemButton>
         </Box>
 
+<<<<<<< HEAD
+=======
+        {/* Opciones del menú */}
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
         <List sx={{ padding: "0rem" }}>
           {opcionesMenu.map((item) => (
             <ListItem key={item.text} disablePadding>
@@ -178,13 +225,21 @@ const Listados = () => {
           ))}
         </List>
 
+<<<<<<< HEAD
+=======
+        {/* Botón de Cerrar Sesión */}
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
         <ListItem disablePadding>
           <ListItemButton onClick={manejarCerrarSesion}>
             <ListItemIcon sx={{ color: '#ffffff' }}>
               <LogoutIcon fontSize="large" />
             </ListItemIcon>
             <ListItemText
+<<<<<<< HEAD
               primary="Cerrar Sesión"
+=======
+              primary="Cerrar "
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
               sx={{
                 color: '#ffffff',
                 opacity: abrirMenu ? 1 : 0,
@@ -196,6 +251,7 @@ const Listados = () => {
         </ListItem>
       </Box>
 
+<<<<<<< HEAD
       <Box sx={{ flexGrow: 1,minHeight: '100vh', padding: '0', marginLeft: abrirMenu ? '250px' : '80px', transition: 'margin-left 0.3s', backgroundColor: '#C1DADF' }}>
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
           <Box sx={cardContainerStyle('#27496D')}>
@@ -256,9 +312,98 @@ const Listados = () => {
         {mostrarListarCarreras && <ListarCarreras />}
         {mostrarListarMaterias && <ListarMaterias />}
       </Box>
+=======
+      {/* Contenido sobrepuesto a la derecha del navbar */}
+      <Box
+        sx={{
+          marginLeft: abrirMenu ? '250px' : '80px', 
+          width: 'calc(100% - (abrirMenu ? 250px : 80px))',
+          height:'100vh',
+          padding: '20px',
+          // backgroundColor: '#C1DADF',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          height: '100%',
+          borderRadius: '30px',
+          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)',
+          zIndex: '2',
+          position: 'relative',
+        }}
+      >
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'flex-start', width: '100%', mb: 2 }}>
+          {/* Tarjeta de Listar Usuarios */}
+          <Card sx={{ m: 1, width: '250px', backgroundColor: 'white', borderRadius: '20px', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)' }}>
+            <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '20px' }}>
+              <ListItemIcon>
+                <AccountCircleIcon fontSize="large" />
+              </ListItemIcon>
+              <Typography variant="h6" textAlign="left">
+                Listar Usuarios
+              </Typography>
+              <Button
+                onClick={manejarClicListarUsuarios}
+                variant="contained"
+                sx={{ backgroundColor: '#00A8CC', color: '#ffffff', marginTop: '10px' }}
+              >
+                Listar
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Tarjeta de Listar Carreras */}
+          <Card sx={{ m: 1, width: '250px', backgroundColor: 'white', borderRadius: '20px', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)' }}>
+            <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '20px' }}>
+              <ListItemIcon>
+                <SchoolIcon fontSize="large" />
+              </ListItemIcon>
+              <Typography variant="h6" textAlign="left">
+                Listar Carreras
+              </Typography>
+              <Button
+                onClick={manejarClicListarCarreras}
+                variant="contained"
+                sx={{ backgroundColor: '#00A8CC', color: '#ffffff', marginTop: '10px' }}
+              >
+                Listar
+              </Button>
+            </CardContent>
+          </Card>
+
+          {/* Tarjeta de Listar Materias */}
+          <Card sx={{ m: 1, width: '250px', backgroundColor: 'white', borderRadius: '20px', boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)' }}>
+            <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', padding: '20px' }}>
+              <ListItemIcon>
+                <MenuBookIcon fontSize="large" />
+              </ListItemIcon>
+              <Typography variant="h6" textAlign="left">
+                Listar Materias
+              </Typography>
+              <Button
+                onClick={manejarClicListarMaterias}
+                variant="contained"
+                sx={{ backgroundColor: '#00A8CC', color: '#ffffff', marginTop: '10px' }}
+              >
+                Listar
+              </Button>
+            </CardContent>
+          </Card>
+        </Box>
+
+        {/* Grillas debajo de las tarjetas */}
+        <Box sx={{ width: '100%' }}>
+          {mostrarListarUsuarios && <ListarUsuarios onClose={() => setMostrarListarUsuarios(false)} />}
+          {mostrarListarMaterias && <ListarMaterias onClose={() => setMostrarListarMaterias(false)} />}
+          {mostrarListarCarreras && <ListarCarreras onClose={() => setMostrarListarCarreras(false)} />}
+        </Box>
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
       </Box>
     </Box>
   );
 };
 
+<<<<<<< HEAD
 export default Listados;
+=======
+export default Listados;
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e

@@ -52,12 +52,19 @@ const Home2 = () => {
       text: "Listados",
       icon: <ListIcon fontSize="large" />,
       link: "/Listados",
+<<<<<<< HEAD
       
+=======
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
     },
     {
       text: "Registrar",
       icon: <PersonAddIcon fontSize="large" />,
+<<<<<<< HEAD
       link: "/Registros ",
+=======
+      link: "/registros",
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
     },
   ];
 
@@ -77,7 +84,11 @@ const Home2 = () => {
           overflow: 'hidden',
           zIndex: 1, 
           boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", 
+<<<<<<< HEAD
           // borderRadius: '40px 40px 40px 20px',
+=======
+          borderRadius: '40px 40px 40px 20px',
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
         }}
       >
         <Box 

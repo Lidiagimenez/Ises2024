@@ -102,12 +102,20 @@ function Registrar() {
         otherwise: () => Yup.string(),
       }),
       fecha_inscripcion: Yup.date().when("id_tipo_usuario", {
+<<<<<<< HEAD
         is: (id_tipo_usuario) => id_tipo_usuario === 3, 
+=======
+        is: (id_tipo_usuario) => id_tipo_usuario === 3, // Comparar con número
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
         then: () => Yup.date().required("Fecha de inscripción es requerida"),
         otherwise: () => Yup.date(),
       }),
       id_carrera: Yup.number().when("id_tipo_usuario", {
+<<<<<<< HEAD
         is: (id_tipo_usuario) => id_tipo_usuario === 3, 
+=======
+        is: (id_tipo_usuario) => id_tipo_usuario === 3, // Comparar con número
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
         then: () => Yup.number().required("Carrera es requerida"),
         otherwise: () => Yup.number(),
       }),
@@ -173,6 +181,7 @@ function Registrar() {
     formik.resetForm(); // Esto restablecerá el formulario a sus valores iniciales.
     console.log("despue de resetear:", formik.values);
   };
+<<<<<<< HEAD
 
   const numberTagStyle = (color) => ({
     position: 'absolute',
@@ -197,11 +206,25 @@ function Registrar() {
         padding={"2rem "}
         sx={{
           fontSize: "1.5rem",
+=======
+
+  return (
+    <>
+      <Typography
+        align="center"
+        padding={"10px"}
+        sx={{
+          fontSize: "2rem",
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
           fontWeight: "bold",
           color: "#27496D",
         }}
       >
+<<<<<<< HEAD
         Completar Formulario de registro usuario
+=======
+        Completar <br /> Formulario de registro usuario
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
       </Typography>
       <Box
         sx={{

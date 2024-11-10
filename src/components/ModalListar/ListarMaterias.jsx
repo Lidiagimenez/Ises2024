@@ -4,13 +4,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Button, Container, MenuList } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import Navegador from "../Navegador";
+import { Box, Typography } from '@mui/material';
 // import ModalEdicion from "./ModalEdicion";
-import Typography from "@mui/material/Typography";
 import BorderColorOutlinedIcon from '@mui/icons-material/BorderColorOutlined';
 import ModalEdicionMaterias from "../ModalEdicion/ModalEdicionMateria";
 import ModalBorrarMateria from "../ModalBorrar/ModalBorrarMateria";
-import Listados from "../../pages/Listados";
 
 function MateriasTable() {
   const [Materias, setMaterias] = useState([]);
@@ -186,14 +184,46 @@ function MateriasTable() {
     console.log("Materia seleccionada:", row);
   };
   
+  const numberTagStyle = (color) => ({
+    position: 'absolute',
+    // top: '-20px',
+    backgroundColor: color,
+    color: '#fff',
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '18px',
+    fontWeight: 'bold',
+  });
+
   return (
     <>
+<<<<<<< HEAD
       <Typography
+=======
+<<<<<<< HEAD
+    <Box sx={numberTagStyle('#27496D')}>03</Box>
+      <Typography
+        align="center"
+        padding={"2rem"}
+        sx={{
+          mr: 2,
+          marginTop: '1rem',
+=======
+      <Typography
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
         variant="h5"
         component="div"
         sx={{
           mr: 2,
           marginTop: 10,
+<<<<<<< HEAD
+=======
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
           fontSize: '2rem',
           fontWeight: 'bold',
           color: "#27496D",
@@ -219,7 +249,15 @@ function MateriasTable() {
       >
         <div
           style={{
+<<<<<<< HEAD
             height: '50rem',
+=======
+<<<<<<< HEAD
+            height: '25rem',
+=======
+            height: '50rem',
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
             width: "50rem",
             // background:'red',
             display: "flex",
@@ -274,8 +312,18 @@ function MateriasTable() {
                     style={{
                       backgroundColor: "",
                       color: "#ffffff",
+<<<<<<< HEAD
                       border: "1rem solid #27496D",
                       padding: "1rem 1,5rem",
+=======
+<<<<<<< HEAD
+                      border: "0.5rem solid #27496D",
+                      // padding: "1rem 1,5rem",
+=======
+                      border: "1rem solid #27496D",
+                      padding: "1rem 1,5rem",
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
                       borderRadius: "0.5rem",
                     }}
                   />

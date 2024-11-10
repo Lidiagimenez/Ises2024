@@ -35,7 +35,7 @@ function Home() {
             color: "#ffffff",
             display: "flex",
             alignItems: "center",
-            fontSize: "2.5rem",
+            fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" }, // Responsividad en el tamaño de la fuente
             fontWeight: "bold",
             textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
           }}
@@ -50,10 +50,10 @@ function Home() {
           onClick={() => { window.location.href = './Login2'; }}
           sx={{
             height: "4rem",
-            width: "11rem",
+            width: { xs: "80%", sm: "11rem" }, // Responsividad en el ancho
             backgroundColor: "#D00A2E",
             borderRadius: "30px",
-            fontSize: "24px",
+            fontSize: { xs: "18px", sm: "24px" }, // Responsividad en el tamaño de la fuente
             color: "#ffffff",
             "&:hover": {
               backgroundColor: "#B00926",
@@ -72,25 +72,26 @@ function Home() {
           justifyContent: "center",
           alignItems: "center",
           backgroundColor: "#3d7382",
-          borderRadius: "30px",
+          // borderRadius: "30px",
           padding: "20px",
           boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", // Sombra para el panel principal
         }}
       >
         {/* Paneles de información e imagen */}
-        <Box 
+        <Box
           sx={{
             display: "flex",
-            flexDirection: "row",
+            flexDirection: { xs: "column", sm: "row" }, // Cambia de columna a fila en pantallas pequeñas
             alignItems: "center",
-            justifyContent: "space-between", 
+            justifyContent: "space-between",
             gap: "30px",
+            width: "100%", // Asegura que ocupe todo el espacio disponible
           }}
         >
           {/* Imagen */}
-          <Box 
+          <Box
             sx={{
-              width: "50%",
+              flex: 1, // Ocupa el espacio disponible
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
@@ -109,19 +110,20 @@ function Home() {
           </Box>
 
           {/* Texto */}
-          <Box 
+          <Box
             sx={{
-              width: "50%",
+              flex: 1, // Ocupa el espacio disponible
               textAlign: "left",
               color: "#ffffff",
               display: "flex",
               flexDirection: "column",
               justifyContent: "center",
+              padding: { xs: "20px", sm: "0" }, // Espacio alrededor del texto
             }}
           >
             <Typography
               sx={{
-                fontSize: "6rem", 
+                fontSize: { xs: "3rem", sm: "4rem", md: "6rem" }, // Responsividad en el tamaño de la fuente
                 fontWeight: "bold",
                 textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
                 lineHeight: "1.2",

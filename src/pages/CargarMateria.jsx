@@ -66,22 +66,56 @@ const CargarMaterias = () => {
     setModalAbierto(false);
     formik.resetForm(); // Esto restablecerá el formulario a sus valores iniciales.
   };
+  const numberTagStyle = (color) => ({
+    position: 'absolute',
+    // top: '-20px',
+    backgroundColor: color,
+    color: '#fff',
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '18px',
+    fontWeight: 'bold',
+  });
 
   return (
     <>
    
+<<<<<<< HEAD
+      <Box sx={numberTagStyle('#27496D')}>03</Box>
+      <Typography
+        align="center"
+        padding={"2rem"}
+        sx={{
+          fontSize: '1.5rem', 
+=======
      {/* <Navegador/> */}
       <Typography
         align="center"
         padding={"10px"}
         sx={{
           fontSize: '2rem', 
+<<<<<<< HEAD
+=======
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
           fontWeight: 'bold',
           color:"#27496D", 
   
         }}
        >
+<<<<<<< HEAD
         Completar Formulario <br /> de registro Materias
+=======
+<<<<<<< HEAD
+        Completar Formulario de registro Materias
+=======
+        Completar Formulario <br /> de registro Materias
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
       </Typography>
       <Box  component="form" onSubmit={formik.handleSubmit}>
         <Grid
@@ -92,6 +126,7 @@ const CargarMaterias = () => {
         
         >
             <TextField
+            value={formik.values.nombre}
             type="text"
             label="Nombre"
             variant="outlined"
@@ -103,6 +138,7 @@ const CargarMaterias = () => {
             helperText={formik.touched.nombre && formik.errors.nombre} // Muestra el mensaje de error
           />
           <TextField
+            value={formik.values.id_tipo_materia}
             type="number"
             select
             label="Tipo Materia"
@@ -118,6 +154,7 @@ const CargarMaterias = () => {
           ))}
           </TextField>
           <TextField
+            value={formik.values.id_estado_materia}
             type="number"
             select
             label="Estado Materia"

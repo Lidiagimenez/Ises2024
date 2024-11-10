@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
 import { BrowserRouter, Routes, Route, Outlet, Navigate  } from 'react-router-dom';
 import Login from './pages/Login';
 import Registrar from './pages/Registrar';
@@ -73,13 +77,45 @@ const AuthenticatedRoute = ({ element, allowedRoles }) => {
 
   return element;
 };
+<<<<<<< HEAD
+=======
+=======
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Outlet,
+  Navigate,
+} from "react-router-dom";
+import Login from "./pages/Login";
+import Registrar from "./pages/Registrar";
+import React, { useEffect } from "react";
+import Home from "./pages/Home";
+import CargarMaterias from "./pages/CargarMateria";
+import UserTable from "./components/ModalListar/ListarUsuarios";
+import ModalEdicion from "./components/ModalEdicion/ModalEdicion";
+import MateriasTable from "./components/ModalListar/ListarMaterias";
+import CargarCarrera from "./pages/CargarCarrera";
+import CarrerasTable from "./components/ModalListar/ListarCarrera";
+import Registros from "./pages/Registros";
+import Navegador from "./components/Navegador";
+import Listados from "./pages/Listados";
+import Home2 from "./pages/Home2";
+import Login2 from "./pages/login/Login2";
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
 
-// Componente Layout con el Navegador
 function LayoutWithNav() {
   return (
     <>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
     {/* <Nav /> */}
        {/* <Navegador />  */}
+=======
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
       <Outlet /> {/* renderiza los componentes hijos */}
     </>
   );
@@ -89,13 +125,12 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-         {/* Ruta que redirige la raíz a /home */}
-         <Route path="/" element={<Home/>} />
+        {/* Ruta que redirige la raíz a /home */}
+        <Route path="/" element={<Home />} />
         {/* Ruta para el Login sin el Navegador */}
         <Route path="/login" element={<Login />} />
         <Route path="/login2" element={<Login2 />} />
         <Route path="/home2" element={<Home2 />} />
-
         {/* Rutas que incluyen el Navegador */}
         <Route element={<LayoutWithNav />}>
           <Route path="/home" element={<Home />} />
@@ -108,10 +143,19 @@ function App() {
           <Route path="/listarcarreras" element={<CarrerasTable />} />
           <Route path="/Listados" element={<Listados />} />
           <Route path="/Registros" element={<Registros />} />
+<<<<<<< HEAD
+
+
+          
+=======
+<<<<<<< HEAD
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
 
 
           
 
+=======
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
         </Route>
       </Routes>
     </BrowserRouter>

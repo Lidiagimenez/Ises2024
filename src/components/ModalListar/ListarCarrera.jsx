@@ -2,14 +2,13 @@ import * as React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Button, Container, MenuList } from "@mui/material";
+import { Button, Container,Box, MenuList } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Navegador from "../Navegador";
 import BorderColorOutlinedIcon from "@mui/icons-material/BorderColorOutlined";
 import ModalEdicionCarrera from "../ModalEdicion/ModalEdicionCarrera"
 import Typography from "@mui/material/Typography";
 import ModalBorrarCarrera from "../ModalBorrar/ModalBorrarCarrera"
-import Listados from "../../pages/Listados";
  
 function CarrerasTable() {
   const [Carreras, setCarreras] = useState([]);
@@ -165,7 +164,39 @@ function CarrerasTable() {
     toolbarExportPrint: "Imprimir",
   };
 
+  const numberTagStyle = (color) => ({
+    position: 'absolute',
+    // top: '-20px',
+    backgroundColor: color,
+    color: '#fff',
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '18px',
+    fontWeight: 'bold',
+  });
+
   return (
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    <>
+    <Box sx={numberTagStyle('#00A8CC')}>02</Box>
+    <Typography
+        variant="h5"
+        sx={{
+          marginTop: '1rem',
+          fontSize: '1.5rem',
+          fontWeight: 'bold',
+          color: "#27496D",
+          textAlign: 'center',
+        }}
+      >
+=======
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
     <>    
       <Typography
         variant="h5"
@@ -179,12 +210,16 @@ function CarrerasTable() {
           textAlign: 'center', // Centra el texto
         }}
         >
+<<<<<<< HEAD
+=======
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
         Listado de Carreras
       </Typography>
       <Container
         sx={{
           display: "flex  ",
-          marginTop: "10px",
+          marginTop: "1.5rem",
           justifyContent: "center",
           alignItems: "center",
           width: "100%",
@@ -198,12 +233,23 @@ function CarrerasTable() {
       >
         <div
           style={{
+<<<<<<< HEAD
             height: 650,
             width: "50rem",
+=======
+<<<<<<< HEAD
+            height: '25rem',
+            // width: "100%",
+=======
+            height: 650,
+            width: "50rem",
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
             display: "flex",
             flexDirection: "column",
             alignContent: "center",
             justifyContent: "center",
+            
           }}
         >
           <DataGrid
@@ -247,16 +293,30 @@ function CarrerasTable() {
                 console.log("dentro de elseif seleccionado");
               }
             }}
+            
             components={{
               Toolbar: () => (
                 <>
                  <GridToolbar
                     style={{
                       backgroundColor: "",
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+                      color: "white",
+                      border: "0.5rem solid #27496D",
+                      // padding: "5px 10px",
+                      borderRadius: "4px",
+=======
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
                       color: "#ffffff",
                       border: "1rem solid #27496D",
                       padding: "1rem 1,5rem",
                       borderRadius: "0.5rem",
+<<<<<<< HEAD
+=======
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
                     }}
                   />
                 </>

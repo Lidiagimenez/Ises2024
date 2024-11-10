@@ -74,7 +74,15 @@ const Login2 = () => {
     };
   
     return (
-      <Container maxWidth="sm">
+      <Container maxWidth="lg"
+      sx={{
+        bgcolor: '#2b4e84',
+        borderRadius: 2, // Bordes redondeados
+        border: '5px solid white', // Borde blanco
+        boxShadow: 7, // Sombra
+        padding: 2, // Espaciado interno
+      }}
+    >
         <Grid
           container
           direction="column"
@@ -139,6 +147,7 @@ const Login2 = () => {
                   >
                     Ingresar
                   </Button>
+                  
                   {loginError && (
                     <Typography variant="body2" color="error">
                       {loginError}

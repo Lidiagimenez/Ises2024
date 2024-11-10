@@ -1,6 +1,5 @@
 import React from "react";
 import { Modal, Button } from "@mui/material";
-// import UserTable from  "./ListarUsuarios";
 
 function ModalEdicionMaterias(props) {
   const {
@@ -13,20 +12,44 @@ function ModalEdicionMaterias(props) {
     handleRadioChange2,
     setEditedMateriaData,
   } = props;
+
   const modalStyles = {
     position: "absolute",
+    display: "flex",
     flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     margin: "20px",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "500px",
-
+    width: "40rem",
     backgroundColor: "white",
-    padding: "20px",
-    borderRadius: "8px",
-    boxShadow: "10px 10px 10px rgba(0, 0, 0, 0.2)",
+    padding: "2rem",
+    borderRadius: "0.5rem",
+    boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",
   };
+
+  const formGroupStyles = {
+    display: "flex",
+    flexDirection: "column",
+    marginBottom: "1rem",
+    width: "100%",
+  };
+
+  const labelStyles = {
+    marginBottom: "0.5rem",
+    fontSize: "1rem",
+    fontWeight: "bold", // Aplicar negrita
+  };
+
+  const inputStyles = {
+    padding: "0.5rem",
+    fontSize: "1rem",
+    borderRadius: "0.25rem",
+    border: "1px solid #ccc",
+  };
+
   return (
     <Modal
       open={open}
@@ -37,8 +60,8 @@ function ModalEdicionMaterias(props) {
       <div className="edit-modal" style={modalStyles}>
         <h2>Editar MATERIA</h2>
         <form>
-          <div>
-            <label htmlFor="nombre">Nombre:</label>
+          <div style={formGroupStyles}>
+            <label htmlFor="nombre" style={labelStyles}>Nombre:</label>
             <input
               type="text"
               id="nombre"
@@ -50,82 +73,72 @@ function ModalEdicionMaterias(props) {
                   nombre: e.target.value,
                 })
               }
-              style={{
-                margin: "10px",
-              }}
+              style={inputStyles}
             />
           </div>
 
-          <div>
-            <label htmlFor="id_tipo_materia">Tipo Materia:</label>
-            <input
-              type="radio"
-              id="regular"
-              name="id_tipo_materia"
-              value="1"
-              checked={editedMateriaData.id_tipo_materia === "1"}
-              onChange={(e) => handleRadioChange(e)}
-              style={{
-                width: 20,
-                height: 20,
-                margin: "10px",
-              }}
-            />
-            <label htmlFor="regular">regular</label>
+          <div style={formGroupStyles}>
+            <label style={labelStyles}>Tipo Materia:</label>
+            <div>
+              <input
+                type="radio"
+                id="regular"
+                name="id_tipo_materia"
+                value="1"
+                checked={editedMateriaData.id_tipo_materia === "1"}
+                onChange={(e) => handleRadioChange(e)}
+                style={{ marginRight: "0.5rem" }}
+              />
+              <label htmlFor="regular" style={{ marginRight: "1rem" }}>Regular</label>
 
-            <input
-              type="radio"
-              id="promocional"
-              name="id_tipo_materia"
-              value="2"
-              checked={editedMateriaData.id_tipo_materia === "2"}
-              onChange={(e) => handleRadioChange(e)}
-              style={{
-                width: 20,
-                height: 20,
-                margin: "10px",
-              }}
-            />
-            <label htmlFor="promocional">promocional</label>
+              <input
+                type="radio"
+                id="promocional"
+                name="id_tipo_materia"
+                value="2"
+                checked={editedMateriaData.id_tipo_materia === "2"}
+                onChange={(e) => handleRadioChange(e)}
+                style={{ marginRight: "0.5rem" }}
+              />
+              <label htmlFor="promocional">Promocional</label>
+            </div>
           </div>
 
-          <div>
-            <label htmlFor="id_estado_materia">Estado Materia:</label>
-            <input
-              type="radio"
-              id="activo"
-              name="id_estado_materia"
-              value="1"
-              checked={editedMateriaData.id_estado_materia === "1"}
-              onChange={(e) => handleRadioChange2(e)}
-              style={{
-                width: 20,
-                height: 20,
-                margin: "10px",
-              }}
-            />
-            <label htmlFor="activo">Activo</label>
+          <div style={formGroupStyles}>
+            <label style={labelStyles}>Estado Materia:</label>
+            <div>
+              <input
+                type="radio"
+                id="activo"
+                name="id_estado_materia"
+                value="1"
+                checked={editedMateriaData.id_estado_materia === "1"}
+                onChange={(e) => handleRadioChange2(e)}
+                style={{ marginRight: "0.5rem" }}
+              />
+              <label htmlFor="activo" style={{ marginRight: "1rem" }}>Activo</label>
 
-            <input
-              type="radio"
-              id="inactivo"
-              name="id_estado_materia"
-              value="2"
-              checked={editedMateriaData.id_estado_materia === "2"}
-              onChange={(e) => handleRadioChange2(e)}
-              style={{
-                width: 20,
-                height: 20,
-                margin: "10px",
-              }}
-            />
-            <label htmlFor="inactivo">Inactivo</label>
+              <input
+                type="radio"
+                id="inactivo"
+                name="id_estado_materia"
+                value="2"
+                checked={editedMateriaData.id_estado_materia === "2"}
+                onChange={(e) => handleRadioChange2(e)}
+                style={{ marginRight: "0.5rem" }}
+              />
+              <label htmlFor="inactivo">Inactivo</label>
+            </div>
           </div>
         </form>
 
         <div>
-          <Button onClick={handleSaveEdit}>Guardar</Button>
-          <Button onClick={handleEditModalClose}>Cancelar</Button>
+          <Button variant="contained" color="primary" onClick={handleSaveEdit} style={{ marginRight: "1rem" }}>
+            Guardar
+          </Button>
+          <Button variant="outlined" color="secondary" onClick={handleEditModalClose}>
+            Cancelar
+          </Button>
         </div>
       </div>
     </Modal>

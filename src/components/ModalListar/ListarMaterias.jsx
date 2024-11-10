@@ -188,13 +188,18 @@ function MateriasTable() {
   
   return (
     <>
-    <Listados/>
-      {/* <Navegador /> */}
       <Typography
-      variant="h5"
-      color=""
-      component="div"
-      sx={{ mr: 2, borderBottom: 1 ,marginTop:10}}>
+        variant="h5"
+        component="div"
+        sx={{
+          mr: 2,
+          marginTop: 10,
+          fontSize: '2rem',
+          fontWeight: 'bold',
+          color: "#27496D",
+          textAlign: 'center', // Centra el texto
+        }}
+        >
         Listado de Materias
       </Typography>
       <Container
@@ -214,8 +219,9 @@ function MateriasTable() {
       >
         <div
           style={{
-            height: 650,
-            // width: "100%",
+            height: '50rem',
+            width: "50rem",
+            // background:'red',
             display: "flex",
             flexDirection: "column",
             alignContent: "center",
@@ -267,10 +273,10 @@ function MateriasTable() {
                   <GridToolbar
                     style={{
                       backgroundColor: "",
-                      color: "white",
-                      border: "1px solid black",
-                      padding: "5px 10px",
-                      borderRadius: "4px",
+                      color: "#ffffff",
+                      border: "1rem solid #27496D",
+                      padding: "1rem 1,5rem",
+                      borderRadius: "0.5rem",
                     }}
                   />
                 </>

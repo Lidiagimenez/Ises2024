@@ -20,16 +20,16 @@ import ClearIcon from "@mui/icons-material/Clear";
 import Registros from "./Registros";
 import Home2 from "./Home2";
 function Registrar() {
-const currencies = [
-  { value: "1", label: "Administrador" },
-  { value: "2", label: "Preceptor/a" },
-  { value: "3", label: "Alumno/a" },
-];
-const currencies2 = [
-  { value: "1", label: "Activo" },
-  { value: "2", label: "Inactivo" },
-];
-//codigo que agregue
+  const currencies = [
+    { value: "1", label: "Administrador" },
+    { value: "2", label: "Preceptor/a" },
+    { value: "3", label: "Alumno/a" },
+  ];
+  const currencies2 = [
+    { value: "1", label: "Activo" },
+    { value: "2", label: "Inactivo" },
+  ];
+  //codigo que agregue
 
   // Declara el estado 'carreras'
   const [carreras, setCarreras] = useState([]);
@@ -37,23 +37,24 @@ const currencies2 = [
   useEffect(() => {
     const buscarCarreras = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/v1/carreras');
+        const response = await axios.get(
+          "http://localhost:3000/api/v1/carreras"
+        );
         setCarreras(response.data); // Guarda los datos en el estado
       } catch (error) {
-        console.error('Error al obtener las carreras:', error);
+        console.error("Error al obtener las carreras:", error);
       }
     };
 
     buscarCarreras();
   }, []);
   // -----------------------------fincodigo agregado
- // Función para obtener las carreras
+  // Función para obtener las carreras
 
-// const currencies3 = [
-//   { value: "1", label: "carrera 1" },
-//   { value: "2", label: "carrera 2" },
-// ];
-
+  // const currencies3 = [
+  //   { value: "1", label: "carrera 1" },
+  //   { value: "2", label: "carrera 2" },
+  // ];
 
   const formik = useFormik({
     initialValues: {
@@ -70,14 +71,12 @@ const currencies2 = [
       telefono2: "",
       fecha_nacimiento: "",
       id_tipo_usuario: "",
-      id_estado_usuario: "",
+      id_estado_usuario: "1",
       alta_baja: "1",
       legajo: "",
       fecha_inscripcion: "",
       id_carrera: "",
     },
-    
-    //
     validationSchema: Yup.object({
       nombre: Yup.string().required("Debe ingresar un Nombre"),
       apellido: Yup.string().required("Debe ingresar Apellido"),
@@ -93,24 +92,25 @@ const currencies2 = [
       id_tipo_usuario: Yup.number().required("defina tipo de Usuario"),
       id_estado_usuario: Yup.number().required("defina estado de usuario"),
       alta_baja: Yup.number(1).required("ingrese alt"),
-      //las siguientes lineas de codigos fueron modificadas
-
+      // Validaciones condicionales
       legajo: Yup.string().when("id_tipo_usuario", {
-        is: (id_tipo_usuario) => id_tipo_usuario === "3",
+        is: (id_tipo_usuario) => {
+          console.log("Tipo de usuario:", id_tipo_usuario);
+          return id_tipo_usuario === 3; // Validar si es 3
+        },
         then: () => Yup.string().required("Legajo es requerido"),
         otherwise: () => Yup.string(),
       }),
       fecha_inscripcion: Yup.date().when("id_tipo_usuario", {
-        is: (id_tipo_usuario) => id_tipo_usuario === "3",
+        is: (id_tipo_usuario) => id_tipo_usuario === 3, // Comparar con número
         then: () => Yup.date().required("Fecha de inscripción es requerida"),
         otherwise: () => Yup.date(),
       }),
       id_carrera: Yup.number().when("id_tipo_usuario", {
-        is: (id_tipo_usuario) => id_tipo_usuario === "3",
+        is: (id_tipo_usuario) => id_tipo_usuario === 3, // Comparar con número
         then: () => Yup.number().required("Carrera es requerida"),
         otherwise: () => Yup.number(),
       }),
-
     }),
     onSubmit: async (data) => {
       try {
@@ -133,7 +133,6 @@ const currencies2 = [
             alta_baja: data.alta_baja,
           }
         );
-        
 
         console.log("------- POST USER ---------", respuesta.da);
         console.log(
@@ -141,7 +140,7 @@ const currencies2 = [
           respuesta.data.data.id_usuario
         );
 
-        if (data.id_tipo_usuario === "3") {
+        if (data.id_tipo_usuario === 3) {
           // Si es un alumno, inserta el legajo en la tabla de alumnos
 
           await axios.post("http://localhost:3000/api/v1/alumnos", {
@@ -153,7 +152,10 @@ const currencies2 = [
         }
 
         abrirModal();
+
+        //setear los valores a los valores iniciales
         formik.resetForm();
+        console.log("Antes de resetear:", formik.values);
       } catch (error) {
         console.log(error);
       }
@@ -169,25 +171,21 @@ const currencies2 = [
   const cerrarModal = () => {
     setModalAbierto(false);
     formik.resetForm(); // Esto restablecerá el formulario a sus valores iniciales.
-  }
-
+    console.log("despue de resetear:", formik.values);
+  };
 
   return (
     <>
-   
-    <Registros />
-    {/* <Navegador /> */}
-  
-      
       <Typography
-        variant="h4"
-        component="h4"
-        color="blue"
         align="center"
         padding={"10px"}
-        marginTop={10}
+        sx={{
+          fontSize: "2rem",
+          fontWeight: "bold",
+          color: "#27496D",
+        }}
       >
-        Formulario de registro usuario
+        Completar <br /> Formulario de registro usuario
       </Typography>
       <Box
         sx={{
@@ -217,6 +215,7 @@ const currencies2 = [
             }}
           >
             <TextField
+              value={formik.values.nombre}
               type="text"
               label="Nombre"
               variant="outlined"
@@ -248,6 +247,7 @@ const currencies2 = [
             }}
           >
             <TextField
+              value={formik.values.apellido}
               type="text"
               label="Apellido"
               variant="outlined"
@@ -279,6 +279,7 @@ const currencies2 = [
             }}
           >
             <TextField
+              value={formik.values.clave}
               type="text"
               label="Clave"
               variant="outlined"
@@ -310,6 +311,7 @@ const currencies2 = [
             }}
           >
             <TextField
+              value={formik.values.dni}
               type="number"
               label="DNI"
               variant="outlined"
@@ -341,6 +343,7 @@ const currencies2 = [
             }}
           >
             <TextField
+              value={formik.values.nacionalidad}
               type="text"
               label="Nacionalidad"
               variant="outlined"
@@ -372,6 +375,7 @@ const currencies2 = [
             }}
           >
             <TextField
+              value={formik.values.direccion}
               type="text"
               label="Direccion"
               variant="outlined"
@@ -403,6 +407,7 @@ const currencies2 = [
             }}
           >
             <TextField
+              value={formik.values.correo1}
               type="email"
               label="email"
               variant="outlined"
@@ -427,6 +432,7 @@ const currencies2 = [
           </div>
 
           <TextField // email2
+            value={formik.values.correo2}
             type="email"
             label="email2"
             variant="outlined"
@@ -442,6 +448,7 @@ const currencies2 = [
             }}
           >
             <TextField
+              value={formik.values.telefono1}
               type="number"
               label="Telefono"
               variant="outlined"
@@ -466,6 +473,7 @@ const currencies2 = [
           </div>
 
           <TextField // tel
+            value={formik.values.telefono2}
             type="number"
             label="Telefono2"
             variant="outlined"
@@ -481,6 +489,7 @@ const currencies2 = [
             }}
           >
             <TextField
+              value={formik.values.fecha_nacimiento}
               type="date"
               label="Fecha Nacimiento"
               variant="outlined"
@@ -515,6 +524,7 @@ const currencies2 = [
             }}
           >
             <TextField
+              value={formik.values.id_tipo_usuario}
               type="number"
               select
               label="Seleccione Tipo de Usuario"
@@ -530,7 +540,6 @@ const currencies2 = [
                 </MenuItem>
               ))}
             </TextField>
-
             {formik.errors.id_tipo_usuario && (
               <ThemeProvider theme={theme}>
                 <div
@@ -544,55 +553,59 @@ const currencies2 = [
               </ThemeProvider>
             )}
           </div>
-          <div // LEGAJO
+          <div
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
             }}
           >
+            {/* LEGAJO */}
             <TextField
+              value={formik.values.legajo}
               type="text"
-              label="Ingrese numero legajo"
+              label="Ingrese número de legajo"
               variant="outlined"
               sx={{ width: 300, mt: 3, mx: 1 }}
               name="legajo"
               onChange={formik.handleChange}
-              error={!!formik.errors.legajo}
+              error={!!formik.errors.legajo && formik.touched.legajo}
               style={{
                 display:
                   formik.values.id_tipo_usuario === "3" ? "block" : "none",
               }}
             />
-
-            {formik.errors.legajo && formik.values.id_tipo_usuario === 3 && (
+            {formik.errors.legajo && formik.touched.legajo && (
               <ThemeProvider theme={theme}>
                 <div
-                  style={{
-                    color: theme.palette.error.main,
-                    fontSize: "12px",
-                  }}
+                  style={{ color: theme.palette.error.main, fontSize: "12px" }}
                 >
                   {formik.errors.legajo}
                 </div>
               </ThemeProvider>
             )}
           </div>
-          <div // Fecha Inscripcion
+
+          <div
             style={{
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
             }}
           >
+            {/* Fecha Inscripcion */}
             <TextField
+              value={formik.values.fecha_inscripcion}
               type="date"
-              label="Ingrese fecha inscripción"
+              label="Ingrese fecha de inscripción"
               variant="outlined"
               sx={{ width: 300, mt: 3, mx: 1 }}
               name="fecha_inscripcion"
               onChange={formik.handleChange}
-              error={!!formik.errors.legajo}
+              error={
+                !!formik.errors.fecha_inscripcion &&
+                formik.touched.fecha_inscripcion
+              }
               style={{
                 display:
                   formik.values.id_tipo_usuario === "3" ? "block" : "none",
@@ -601,9 +614,8 @@ const currencies2 = [
                 startAdornment: <SearchIcon />,
               }}
             />
-
             {formik.errors.fecha_inscripcion &&
-              formik.values.id_tipo_usuario === 3 && (
+              formik.touched.fecha_inscripcion && (
                 <ThemeProvider theme={theme}>
                   <div
                     style={{
@@ -617,37 +629,44 @@ const currencies2 = [
               )}
           </div>
 
-          {/* //CARRERA */}
+          {/* CARRERA */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <TextField
+              select
+              label="Carrera"
+              variant="outlined"
+              sx={{ width: 300, mt: 3 }}
+              name="id_carrera"
+              onChange={formik.handleChange}
+              error={!!formik.errors.id_carrera && formik.touched.id_carrera}
+              style={{
+                display:
+                  formik.values.id_tipo_usuario === "3" ? "block" : "none",
+              }}
+            >
+              {carreras.map((carrera) => (
+                <MenuItem key={carrera.id_carrera} value={carrera.id_carrera}>
+                  {carrera.nombre}
+                </MenuItem>
+              ))}
+            </TextField>
 
-          <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-        <TextField
-          type="number"
-          select
-          label="Carrera"
-          variant="outlined"
-          sx={{ width: 300, mt: 3 }}
-          name="id_carrera"
-          onChange={formik.handleChange}
-          error={!!formik.errors.id_carrera}
-          style={{
-            display: formik.values.id_tipo_usuario === "3" ? "block" : "none",
-          }}
-        >
-          {carreras.map((carrera) => (
-            <MenuItem key={carrera.id_carrera} value={carrera.id_carrera}>
-              {carrera.nombre}
-            </MenuItem>
-          ))}
-        </TextField>
-
-        {formik.errors.id_carrera && formik.values.id_tipo_usuario === "3" && (
-          <ThemeProvider theme={theme}>
-            <div style={{ color: theme.palette.error.main, fontSize: "12px" }}>
-              {formik.errors.id_carrera}
-            </div>
-          </ThemeProvider>
-        )}
-      </div>
+            {formik.errors.id_carrera && formik.touched.id_carrera && (
+              <ThemeProvider theme={theme}>
+                <div
+                  style={{ color: theme.palette.error.main, fontSize: "12px" }}
+                >
+                  {formik.errors.id_carrera}
+                </div>
+              </ThemeProvider>
+            )}
+          </div>
 
           <div // ESTADO USUARIO
             style={{
@@ -731,20 +750,28 @@ const currencies2 = [
             </Box>
           </Modal>
 
-          <IconButton
-            href="/listarusuarios"
+          <Button
+            href="Listados"
+            // href="/listarmaterias"
             variant="contained"
             type="submit"
             edge="start"
             aria-label="menu"
-            sx={{ width: 300, mt: 3 }}
+            sx={{
+              width: 300,
+              mt: 3,
+              backgroundColor: "#27496D", // Color de fondo
+              borderRadius: "0.5rem",
+              "&:hover": {
+                backgroundColor: "#00A8CC",
+              },
+            }}
           >
-            Ver todos los usuarios
-          </IconButton>
+            Ver Todos los Usuarios.
+          </Button>
         </Grid>
       </Box>
     </>
   );
-
 }
 export default Registrar;

@@ -70,7 +70,7 @@ function Home() {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
-          backgroundColor: "#3d7382",
+          backgroundColor: "#3d7",
           // borderRadius: "30px",
           padding: "20px",
           boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", // Sombra para el panel principal

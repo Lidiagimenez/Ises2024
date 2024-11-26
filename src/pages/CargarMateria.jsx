@@ -84,38 +84,18 @@ const CargarMaterias = () => {
   return (
     <>
    
-<<<<<<< HEAD
       <Box sx={numberTagStyle('#27496D')}>03</Box>
       <Typography
         align="center"
         padding={"2rem"}
         sx={{
           fontSize: '1.5rem', 
-=======
-     {/* <Navegador/> */}
-      <Typography
-        align="center"
-        padding={"10px"}
-        sx={{
-          fontSize: '2rem', 
-<<<<<<< HEAD
-=======
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
           fontWeight: 'bold',
           color:"#27496D", 
   
         }}
        >
-<<<<<<< HEAD
-        Completar Formulario <br /> de registro Materias
-=======
-<<<<<<< HEAD
         Completar Formulario de registro Materias
-=======
-        Completar Formulario <br /> de registro Materias
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
       </Typography>
       <Box  component="form" onSubmit={formik.handleSubmit}>
         <Grid
@@ -126,11 +106,7 @@ const CargarMaterias = () => {
         
         >
             <TextField
-<<<<<<< HEAD
-            // value={}
-=======
             value={formik.values.nombre}
->>>>>>> fd7ed5792b1c1f85c648b87b6d7837b30dca0835
             type="text"
             label="Nombre"
             variant="outlined"

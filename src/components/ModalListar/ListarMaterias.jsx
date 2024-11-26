@@ -201,10 +201,6 @@ function MateriasTable() {
 
   return (
     <>
-<<<<<<< HEAD
-      <Typography
-=======
-<<<<<<< HEAD
     <Box sx={numberTagStyle('#27496D')}>03</Box>
       <Typography
         align="center"
@@ -212,18 +208,6 @@ function MateriasTable() {
         sx={{
           mr: 2,
           marginTop: '1rem',
-=======
-      <Typography
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
-        variant="h5"
-        component="div"
-        sx={{
-          mr: 2,
-          marginTop: 10,
-<<<<<<< HEAD
-=======
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
           fontSize: '2rem',
           fontWeight: 'bold',
           color: "#27496D",
@@ -249,15 +233,7 @@ function MateriasTable() {
       >
         <div
           style={{
-<<<<<<< HEAD
-            height: '50rem',
-=======
-<<<<<<< HEAD
             height: '25rem',
-=======
-            height: '50rem',
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
             width: "50rem",
             // background:'red',
             display: "flex",
@@ -312,18 +288,8 @@ function MateriasTable() {
                     style={{
                       backgroundColor: "",
                       color: "#ffffff",
-<<<<<<< HEAD
-                      border: "1rem solid #27496D",
-                      padding: "1rem 1,5rem",
-=======
-<<<<<<< HEAD
                       border: "0.5rem solid #27496D",
                       // padding: "1rem 1,5rem",
-=======
-                      border: "1rem solid #27496D",
-                      padding: "1rem 1,5rem",
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
                       borderRadius: "0.5rem",
                     }}
                   />

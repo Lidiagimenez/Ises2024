@@ -180,9 +180,6 @@ function CarrerasTable() {
   });
 
   return (
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
     <>
     <Box sx={numberTagStyle('#00A8CC')}>02</Box>
     <Typography
@@ -195,25 +192,6 @@ function CarrerasTable() {
           textAlign: 'center',
         }}
       >
-=======
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
-    <>    
-      <Typography
-        variant="h5"
-        component="div"
-        sx={{
-          mr: 2,
-          marginTop: 10,
-          fontSize: '2rem',
-          fontWeight: 'bold',
-          color: "#27496D",
-          textAlign: 'center', // Centra el texto
-        }}
-        >
-<<<<<<< HEAD
-=======
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
         Listado de Carreras
       </Typography>
       <Container
@@ -233,18 +211,8 @@ function CarrerasTable() {
       >
         <div
           style={{
-<<<<<<< HEAD
-            height: 650,
-            width: "50rem",
-=======
-<<<<<<< HEAD
             height: '25rem',
             // width: "100%",
-=======
-            height: 650,
-            width: "50rem",
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
             display: "flex",
             flexDirection: "column",
             alignContent: "center",
@@ -300,23 +268,10 @@ function CarrerasTable() {
                  <GridToolbar
                     style={{
                       backgroundColor: "",
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
                       color: "white",
                       border: "0.5rem solid #27496D",
                       // padding: "5px 10px",
                       borderRadius: "4px",
-=======
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
-                      color: "#ffffff",
-                      border: "1rem solid #27496D",
-                      padding: "1rem 1,5rem",
-                      borderRadius: "0.5rem",
-<<<<<<< HEAD
-=======
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
                     }}
                   />
                 </>

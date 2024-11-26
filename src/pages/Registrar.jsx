@@ -102,28 +102,12 @@ function Registrar() {
         otherwise: () => Yup.string(),
       }),
       fecha_inscripcion: Yup.date().when("id_tipo_usuario", {
-<<<<<<< HEAD
-        is: (id_tipo_usuario) => id_tipo_usuario === 3, // Comparar con número
-=======
-<<<<<<< HEAD
         is: (id_tipo_usuario) => id_tipo_usuario === 3, 
-=======
-        is: (id_tipo_usuario) => id_tipo_usuario === 3, // Comparar con número
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
         then: () => Yup.date().required("Fecha de inscripción es requerida"),
         otherwise: () => Yup.date(),
       }),
       id_carrera: Yup.number().when("id_tipo_usuario", {
-<<<<<<< HEAD
-        is: (id_tipo_usuario) => id_tipo_usuario === 3, // Comparar con número
-=======
-<<<<<<< HEAD
         is: (id_tipo_usuario) => id_tipo_usuario === 3, 
-=======
-        is: (id_tipo_usuario) => id_tipo_usuario === 3, // Comparar con número
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
         then: () => Yup.number().required("Carrera es requerida"),
         otherwise: () => Yup.number(),
       }),
@@ -189,9 +173,6 @@ function Registrar() {
     formik.resetForm(); // Esto restablecerá el formulario a sus valores iniciales.
     console.log("despue de resetear:", formik.values);
   };
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
   const numberTagStyle = (color) => ({
     position: 'absolute',
@@ -216,33 +197,11 @@ function Registrar() {
         padding={"2rem "}
         sx={{
           fontSize: "1.5rem",
-=======
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
-
-  return (
-    <>
-      <Typography
-        align="center"
-        padding={"10px"}
-        sx={{
-          fontSize: "2rem",
-<<<<<<< HEAD
-=======
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
           fontWeight: "bold",
           color: "#27496D",
         }}
       >
-<<<<<<< HEAD
-        Completar <br /> Formulario de registro usuario
-=======
-<<<<<<< HEAD
         Completar Formulario de registro usuario
-=======
-        Completar <br /> Formulario de registro usuario
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
       </Typography>
       <Box
         sx={{

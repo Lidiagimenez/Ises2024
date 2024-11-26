@@ -25,9 +25,6 @@ const Nav = () => {
     {
       text: "Listados",
       icon: <ListIcon fontSize="large" />,
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
       
       link: "/Listados",
       
@@ -39,18 +36,6 @@ const Nav = () => {
       link: "/Registros",
       
       
-=======
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
-      link: "/Listados",
-    },
-    {
-      text: "Registrar",
-      icon: <PersonAddIcon fontSize="large" />,
-      link: "/Registros",
-<<<<<<< HEAD
-=======
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
     },
   ];
 
@@ -72,15 +57,7 @@ const Nav = () => {
           backgroundColor: '#27496D', 
           transition: 'width 0.3s ease',
           boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", 
-<<<<<<< HEAD
-          borderRadius: '40px 40px 40px 20px',
-=======
-<<<<<<< HEAD
           // borderRadius: '40px 40px 40px 20px',
-=======
-          borderRadius: '40px 40px 40px 20px',
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
           overflow: 'hidden',
         }}
       >
@@ -138,37 +115,6 @@ const Nav = () => {
           
           {/* Botón de Cerrar Sesión */}
           <ListItem disablePadding>
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-  <ListItemButton
-    onClick={manejarCerrarSesion}
-    sx={{
-      '&:hover': {
-        backgroundColor: '#C1DADF',
-        borderRadius: '20px 0px 0px 20px',
-        boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)',
-        transform: 'scale(1.05)',
-        transition: 'transform 0.3s ease-in-out', // animación suave
-      },
-    }}
-  >
-    <ListItemIcon sx={{ color: '#ffffff' }}>
-      <LogoutIcon fontSize="large" />
-    </ListItemIcon>
-    <ListItemText
-      primary="Cerrar"
-      sx={{
-        color: '#ffffff',
-        opacity: abrirMenu ? 1 : 0,
-        transition: 'opacity 0.3s',
-        fontSize: '1.2rem',
-      }}
-    />
-  </ListItemButton>
-</ListItem>
-=======
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
             <ListItemButton onClick={manejarCerrarSesion}>
               <ListItemIcon sx={{ color: '#ffffff' }}>
                 <LogoutIcon fontSize="large" />
@@ -184,10 +130,6 @@ const Nav = () => {
               />
             </ListItemButton>
           </ListItem>
-<<<<<<< HEAD
-=======
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
->>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
         </List>
       </Box>
     </Box>

@@ -32,21 +32,16 @@ const Registros = () => {
   };
 
   const cardStyle = {
-    width: '220px',
-    height: '250px',
-    borderRadius: '15px',
-    backgroundColor: '#FFFFFF', 
-    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', 
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
+    m: 1,
+    width: '250px',
+    backgroundColor: 'white',
+    borderRadius: '20px',
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
   };
 
   const numberTagStyle = (color) => ({
     position: 'absolute',
-    // top: '-20px',
+    Ñtop: '-20px',
     backgroundColor: color,
     color: '#fff',
     width: '50px',

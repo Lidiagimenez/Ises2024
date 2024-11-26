@@ -1,3 +1,18 @@
+<<<<<<< HEAD
+import React, { useState } from 'react';
+import { Outlet, Link } from 'react-router-dom';
+import { Card, CardContent, Button, Box, Typography, Container   } from '@mui/material'; 
+import Nav from './nav';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle'; // Icono para listar usuarios
+import MenuBookIcon from '@mui/icons-material/MenuBook'; // Icono para listar materias
+import SchoolIcon from '@mui/icons-material/School'; // Icono para listar carreras
+import ListarUsuarios from '../components/ModalListar/ListarUsuarios';
+import ListarCarreras from '../components/ModalListar/ListarCarrera';
+import ListarMaterias from '../components/ModalListar/ListarMaterias';
+
+const Listados = () => {
+  // Estados para mostrar cada lista
+=======
 import React, { useState, useEffect } from "react";  
 import { Link } from "react-router-dom";
 import { HiOutlineBars3 } from "react-icons/hi2";
@@ -7,10 +22,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+<<<<<<< HEAD
+=======
 import HomeIcon from "@mui/icons-material/Home";
 import ListIcon from "@mui/icons-material/List";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import LogoutIcon from "@mui/icons-material/Logout";
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
 import Typography from '@mui/material/Typography'; 
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -19,6 +37,14 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SchoolIcon from '@mui/icons-material/School';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 
+<<<<<<< HEAD
+import HomeIcon from "@mui/icons-material/Home";
+import ListIcon from "@mui/icons-material/List";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import LogoutIcon from "@mui/icons-material/Logout";
+
+=======
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
 import ListarUsuarios from '../components/ModalListar/ListarUsuarios';
 import ListarCarreras from '../components/ModalListar/ListarCarrera';
 import ListarMaterias from '../components/ModalListar/ListarMaterias';
@@ -32,14 +58,64 @@ const manejarCerrarSesion = () => {
 
   window.location.href = "/login2";
 };
+<<<<<<< HEAD
+
+const cardStyle = {
+  m: 1,
+  width: '250px',
+  backgroundColor: 'white',
+  borderRadius: '20px',
+  boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+};
+
+const numberTagStyle = (color) => ({
+  position: 'absolute',
+  backgroundColor: color,
+  color: '#fff',
+  width: '50px',
+  height: '50px',
+  borderRadius: '50%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  fontSize: '18px',
+  fontWeight: 'bold',
+});
+
+const cardContainerStyle = (color) => ({
+  backgroundColor: color,
+  padding: '0rem',
+  borderRadius: '10px',
+  boxShadow: '0px 6px 20px rgba(0, 0, 0, 0.2)',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+=======
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
 
 const Listados = () => {
   const [abrirMenu, setAbrirMenu] = useState(true);
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
   const [mostrarListarUsuarios, setMostrarListarUsuarios] = useState(false);
   const [mostrarListarMaterias, setMostrarListarMaterias] = useState(false);
   const [mostrarListarCarreras, setMostrarListarCarreras] = useState(false);
 
+<<<<<<< HEAD
+  // Manejadores de clic para los botones
+  const manejarClicListarUsuarios = () => {
+    setMostrarListarUsuarios(true);
+    setMostrarListarMaterias(false);
+    setMostrarListarCarreras(false);
+  };
+
+=======
   const opcionesMenu = [
+<<<<<<< HEAD
+    { text: "Inicio", icon: <HomeIcon fontSize="large" />, link: "/home2" },
+    { text: "Listados", icon: <ListIcon fontSize="large" />, link: "/Listados" },
+    { text: "Registros", icon: <PersonAddIcon fontSize="large" />, link: "/Registros" },
+=======
     {
       text: "Inicio",
       icon: <HomeIcon fontSize="large" />,
@@ -55,6 +131,7 @@ const Listados = () => {
       icon: <PersonAddIcon fontSize="large" />,
       link: "/registros",
     },
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
   ];
 
   const handleResize = () => {
@@ -76,6 +153,7 @@ const Listados = () => {
     setMostrarListarCarreras(false);
   };
 
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
   const manejarClicListarMaterias = () => {
     setMostrarListarMaterias(true);
     setMostrarListarUsuarios(false);
@@ -88,9 +166,95 @@ const Listados = () => {
     setMostrarListarMaterias(false);
   };
 
+<<<<<<< HEAD
+  const cardStyle = {
+    width: '220px',
+    height: '250px',
+    borderRadius: '15px',
+    backgroundColor: '#FFFFFF', 
+    boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)', 
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  };
+
+  const numberTagStyle = (color) => ({
+    position: 'absolute',
+    top: '-20px',
+    backgroundColor: color,
+    color: '#fff',
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '18px',
+    fontWeight: 'bold',
+  });
+
+  const cardContainerStyle = (color) => ({
+    backgroundColor: color,
+    padding: '20px',
+    borderRadius: '20px',
+    boxShadow: '0px 6px 20px rgba(0, 0, 0, 0.2)', 
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  });
+
+
   return (
+  
+    <Container sx={{ 
+      display: 'flex', 
+      minHeight: '100rem',
+      minWidth:'100rem', 
+      borderRadius:'3rem',
+      background: 'linear-gradient(135deg, #0C7B93, #27496D)',
+      overflowX: 'auto', // Permitir scroll horizontal si es necesario
+    }}
+    >
+       <Nav />  
+       <Box sx={{ flexGrow: 1, padding: '20px',maxWidth: '100rem', }}>
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'row', // Mantener las tarjetas en fila
+            justifyContent: 'space-between', // Distribuir las tarjetas uniformemente
+            // backgroundColor: '#f9f9f9',
+            padding: '10px', // Reducir el padding para evitar espacios excesivos
+            borderRadius: '10px',
+            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+            gap: '10px', // Reducir el gap entre las tarjetas
+            height: 'auto',
+            flexWrap: 'wrap' // Hacer que las tarjetas se ajusten a la pantalla en caso de necesitar más espacio
+          }}
+        >
+        {/* Tarjeta de Listar Usuarios */}
+
+          <Box sx={cardContainerStyle('#27496D')}>
+            <Card sx={cardStyle}>
+              <Box sx={numberTagStyle('#00A8CC')}>01</Box>
+              <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <AccountCircleIcon sx={{ fontSize: '40px', color: '#27496D' }} />
+                <Typography variant="h6" sx={{ color: '#27496D', marginBottom: '10px' }}>Listado de Usuarios</Typography>
+                <Button 
+                  variant="contained" 
+                  sx={{ backgroundColor: '#00A8CC', color: '#FFFFFF' }}
+                  onClick={manejarClicListarUsuarios}
+                >
+                  Listar Usuarios
+=======
+  return (
+<<<<<<< HEAD
+    <Box sx={{ display: "flex", height: "100vh",backgroundColor: '#C1DADF',padding:'0' }}>
+=======
     <Box sx={{ display: "flex", height: "100vh" }}>
       {/* Navbar izquierdo */}
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
       <Box
         sx={{
           position: 'fixed',
@@ -104,10 +268,16 @@ const Listados = () => {
           overflow: 'hidden',
           zIndex: 1,
           boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", 
+<<<<<<< HEAD
+          // borderRadius: '40px 40px 40px 20px',
+        }}
+      >
+=======
           borderRadius: '40px 40px 40px 20px',
         }}
       >
         {/* Botón para abrir/cerrar el menú */}
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
         <Box 
           sx={{ 
             display: 'flex', 
@@ -124,7 +294,10 @@ const Listados = () => {
           </ListItemButton>
         </Box>
 
+<<<<<<< HEAD
+=======
         {/* Opciones del menú */}
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
         <List sx={{ padding: "0rem" }}>
           {opcionesMenu.map((item) => (
             <ListItem key={item.text} disablePadding>
@@ -160,14 +333,21 @@ const Listados = () => {
           ))}
         </List>
 
+<<<<<<< HEAD
+=======
         {/* Botón de Cerrar Sesión */}
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
         <ListItem disablePadding>
           <ListItemButton onClick={manejarCerrarSesion}>
             <ListItemIcon sx={{ color: '#ffffff' }}>
               <LogoutIcon fontSize="large" />
             </ListItemIcon>
             <ListItemText
+<<<<<<< HEAD
+              primary="Cerrar Sesión"
+=======
               primary="Cerrar "
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
               sx={{
                 color: '#ffffff',
                 opacity: abrirMenu ? 1 : 0,
@@ -179,6 +359,139 @@ const Listados = () => {
         </ListItem>
       </Box>
 
+<<<<<<< HEAD
+      <Box sx={{ flexGrow: 1,minHeight: '100vh', padding: '0', marginLeft: abrirMenu ? '250px' : '80px', transition: 'margin-left 0.3s', backgroundColor: '#C1DADF' }}>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: '20px' }}>
+          <Box sx={cardContainerStyle('#27496D')}>
+            <Card sx={cardStyle}>
+              <Box sx={numberTagStyle('#00A8CC')}>01</Box>
+              <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <AccountCircleIcon sx={{ fontSize: '40px', color: '#27496D' }} />
+                <Typography variant="h6" sx={{ color: '#27496D', mb: '10px' }}>Listar Usuarios</Typography>
+                <Button variant="contained" sx={{ backgroundColor: '#00A8CC', color: '#FFFFFF' }} onClick={manejarClicListarUsuarios}>
+                  Ver Usuarios
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
+                </Button>
+              </CardContent>
+            </Card>
+          </Box>
+
+<<<<<<< HEAD
+        {/* Tarjeta de Listar Materias */}
+
+
+          <Box sx={cardContainerStyle('#0C7B93')}>
+            <Card sx={cardStyle}>
+              <Box sx={numberTagStyle('#0C7B93')}>02</Box>
+              <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <SchoolIcon sx={{ fontSize: '40px', color: '#27496D' }} />
+                <Typography variant="h6" sx={{ color: '#27496D', marginBottom: '10px' }}>Listado de Materias</Typography>
+                <Button 
+                  variant="contained" 
+                  sx={{ backgroundColor: '#0C7B93', color: '#FFFFFF' }}
+                  onClick={manejarClicListarMaterias}
+                >
+                 Listar Materias
+=======
+          <Box sx={cardContainerStyle('#0C7B93')}>
+            <Card sx={cardStyle}>
+              <Box sx={numberTagStyle('#0C7B93')}>02</Box>
+              <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <SchoolIcon sx={{ fontSize: '40px', color: '#27496D' }} />
+                <Typography variant="h6" sx={{ color: '#27496D', mb: '10px' }}>Listar Carreras</Typography>
+                <Button variant="contained" sx={{ backgroundColor: '#00A8CC', color: '#FFFFFF' }} onClick={manejarClicListarCarreras}>
+                  Ver Carreras
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
+                </Button>
+              </CardContent>
+            </Card>
+          </Box>
+
+<<<<<<< HEAD
+        {/* Tarjeta de Listar Carreras */}
+
+          <Box sx={cardContainerStyle('#00A8CC')}>
+            <Card sx={cardStyle}>
+              <Box sx={numberTagStyle('#27496D')}>03</Box>
+              <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <MenuBookIcon sx={{ fontSize: '40px', color: '#27496D' }} />
+                <Typography variant="h6" sx={{ color: '#27496D', marginBottom: '10px' }}>Listado de Carreras</Typography>
+                <Button 
+                  variant="contained" 
+                  sx={{ backgroundColor: '#27496D', color: '#FFFFFF' }}
+                  onClick={manejarClicListarCarreras}
+                >
+                  Listar Carreras
+=======
+          <Box sx={cardContainerStyle('#00A8CC')}>
+            <Card sx={cardStyle}>
+              <Box sx={numberTagStyle('#00A8CC')}>03</Box>
+              <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <MenuBookIcon sx={{ fontSize: '40px', color: '#27496D' }} />
+                <Typography variant="h6" sx={{ color: '#27496D', mb: '10px' }}>Listar Materias</Typography>
+                <Button variant="contained" sx={{ backgroundColor: '#00A8CC', color: '#FFFFFF' }} onClick={manejarClicListarMaterias}>
+                  Ver Materias
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
+                </Button>
+              </CardContent>
+            </Card>
+          </Box>
+<<<<<<< HEAD
+
+      </Box>
+      
+
+      {/* Espacio para las grillas */}
+      <Box
+          sx={{
+            marginTop: '10px',
+            backgroundColor: '#C1DADF',
+            borderRadius: '10px',
+            // padding: '20px',
+            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            
+            
+          }}
+        >
+      {/* Renderiza los componentes según el estado */}
+      <div style={{ marginTop: '20px' }}>
+        {mostrarListarUsuarios && <ListarUsuarios />}
+        {mostrarListarMaterias && <ListarMaterias />}
+        {mostrarListarCarreras && <ListarCarreras />}
+      </div>
+      </Box>
+    </Box>
+      </Container>
+     
+  );
+  
+};
+export default Listados;
+=======
+        </Box>
+        <Box
+          sx={{
+            marginTop: '20px',
+            backgroundColor: '#C1DADF',
+            // borderRadius: '2rem',
+            // padding: '20px',
+            boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
+            width:'auto',
+            height: 'auto',
+            // display: 'flex',
+            // justifyContent: 'center',
+            // alignItems: 'center',
+          }}
+        >
+
+        {mostrarListarUsuarios && <ListarUsuarios />}
+        {mostrarListarCarreras && <ListarCarreras />}
+        {mostrarListarMaterias && <ListarMaterias />}
+      </Box>
+=======
       {/* Contenido sobrepuesto a la derecha del navbar */}
       <Box
         sx={{
@@ -262,9 +575,15 @@ const Listados = () => {
           {mostrarListarMaterias && <ListarMaterias onClose={() => setMostrarListarMaterias(false)} />}
           {mostrarListarCarreras && <ListarCarreras onClose={() => setMostrarListarCarreras(false)} />}
         </Box>
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
       </Box>
     </Box>
   );
 };
 
+<<<<<<< HEAD
 export default Listados;
+=======
+export default Listados;
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4

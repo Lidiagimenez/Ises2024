@@ -1,17 +1,18 @@
 import * as React from "react";
 import { Box, Typography, Button } from "@mui/material";
 import inicio from '../assets/inicio2.svg';
+import Login2 from "./login/Login2";
 
 function Home() {
   return (
     <Box
       sx={{
         flexGrow: 1,
-        height: "100vh",
-        width: "100vw",
+        height: "100vh", 
+        width: "100vw", 
         display: "flex",
         flexDirection: "column",
-        background: "#C1DADF",
+        background: "#142850", 
         padding: "20px", // Espacio interno en la pantalla
       }}
     >
@@ -22,9 +23,9 @@ function Home() {
           justifyContent: "space-between",
           alignItems: "center",
           background: "#27496D",
-          // borderRadius: "30px",
+          borderRadius: "30px",
           padding: "20px",
-          marginBottom: "10px",
+          marginBottom: "20px",
           boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", // Sombra suave
         }}
       >
@@ -96,15 +97,15 @@ function Home() {
               alignItems: "center",
             }}
           >
-            <img
-              src={inicio}
+            <img 
+              src={inicio} 
               alt="Inicio"
-              style={{
-                width: '100%',
-                height: 'auto',
+              style={{ 
+                width: '100%', 
+                height: 'auto', 
                 borderRadius: '20px',
                 boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.1)", // Sombra en la imagen
-              }}
+              }} 
             />
           </Box>
 

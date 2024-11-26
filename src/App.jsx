@@ -1,3 +1,85 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
+import { BrowserRouter, Routes, Route, Outlet, Navigate  } from 'react-router-dom';
+import Login from './pages/Login';
+import Registrar from './pages/Registrar';
+import React, { useEffect } from "react";
+import Home from './pages/Home';
+import CargarMaterias from './pages/CargarMateria';
+import UserTable from './components/ModalListar/ListarUsuarios';
+import ModalEdicion from './components/ModalEdicion/ModalEdicion';
+import MateriasTable from './components/ModalListar/ListarMaterias';
+import CargarCarrera from './pages/CargarCarrera';
+import CarrerasTable from './components/ModalListar/ListarCarrera';
+import Registros from './pages/Registros';
+import Navegador from './components/Navegador';
+import Listados from './pages/Listados';
+import Home2 from './pages/Home2';
+import  Login2 from "./pages/login/Login2";
+import { jwtDecode } from "jwt-decode";
+import axios from 'axios';
+
+const AuthenticatedRoute = ({ element, allowedRoles }) => {
+  const accessToken = localStorage.getItem('access_token');
+  const userRole = parseInt(localStorage.getItem('userType'), 10);
+
+  if (!allowedRoles.includes(userRole)) {
+    alert('Permiso negado');
+    window.location.href = '/';
+  }
+
+  const refreshAccessToken = async () => {
+    try {
+      const refresh_token = localStorage.getItem('refresh_token');
+      const response = await axios.post("http://localhost:3000/api/v1/refrescar-token", {
+        refresh_token: refresh_token,
+      });
+
+      if (response.status === 200) {
+        const { access_token } = response.data;
+        localStorage.setItem('access_token', access_token);
+      } else {
+        window.location.href = '/';
+      }
+    } catch (error) {
+      window.location.href = '/';
+    }
+  };
+
+  const checkTokenExpiration = () => {
+    if (accessToken) {
+      const tokenPayload = jwtDecode(accessToken);
+      const expirationTime = tokenPayload.exp * 1000;
+      const currentTime = Date.now();
+
+      if (expirationTime - currentTime < 120000) {
+        const extendSession = window.confirm('Tu sesión está a punto de expirar. ¿Deseas extenderla por 15 minutos más?');
+
+        if (extendSession) {
+          refreshAccessToken();
+        } else {
+          window.location.href = '/';
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    const tokenExpirationInterval = setInterval(checkTokenExpiration, 60000);
+    return () => clearInterval(tokenExpirationInterval);
+  }, [accessToken, allowedRoles]);
+
+  if (!accessToken) {
+    return <Navigate to="/login2" />;
+  }
+
+  return element;
+};
+<<<<<<< HEAD
+=======
+=======
 import {
   BrowserRouter,
   Routes,
@@ -20,10 +102,20 @@ import Navegador from "./components/Navegador";
 import Listados from "./pages/Listados";
 import Home2 from "./pages/Home2";
 import Login2 from "./pages/login/Login2";
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
 
 function LayoutWithNav() {
   return (
     <>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
+    {/* <Nav /> */}
+       {/* <Navegador />  */}
+=======
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
       <Outlet /> {/* renderiza los componentes hijos */}
     </>
   );
@@ -51,6 +143,19 @@ function App() {
           <Route path="/listarcarreras" element={<CarrerasTable />} />
           <Route path="/Listados" element={<Listados />} />
           <Route path="/Registros" element={<Registros />} />
+<<<<<<< HEAD
+
+
+          
+=======
+<<<<<<< HEAD
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
+
+
+          
+
+=======
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
         </Route>
       </Routes>
     </BrowserRouter>

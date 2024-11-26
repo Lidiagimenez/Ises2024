@@ -52,19 +52,46 @@ const CargarCarrera = () => {
     setModalAbierto(false);
     formik.resetForm(); // Esto restablecerá el formulario a sus valores iniciales.
   };
+  const numberTagStyle = (color) => ({
+    position: 'absolute',
+    // top: '-20px',
+    backgroundColor: color,
+    color: '#fff',
+    width: '50px',
+    height: '50px',
+    borderRadius: '50%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '18px',
+    fontWeight: 'bold',
+  });
 
   return (
     <>
+<<<<<<< HEAD
+      <Box sx={numberTagStyle('#0C7B93')}>02</Box>
+      <Typography
+        align="center"
+        padding={"2rem"}
+        sx={{
+          fontSize: '1.5rem', 
+=======
       <Typography
         align="center"
         padding={"10px"}
         sx={{
           fontSize: '2rem', 
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
           fontWeight: 'bold',
           color: "#27496D",
         }}
       >
+<<<<<<< HEAD
+        Completar Formulario de registro Carreras
+=======
         Completar Formulario <br />de registro Carreras
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
       </Typography>
       <Box component="form" onSubmit={formik.handleSubmit}>
         <Grid

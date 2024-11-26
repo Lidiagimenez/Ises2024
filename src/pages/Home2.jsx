@@ -1,28 +1,28 @@
 import React, { useState, useEffect } from "react"; 
-import { Link } from "react-router-dom";
-import { HiOutlineBars3 } from "react-icons/hi2";
-import Box from "@mui/material/Box";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import HomeIcon from "@mui/icons-material/Home";
-import ListIcon from "@mui/icons-material/List";
-import PersonAddIcon from "@mui/icons-material/PersonAdd";
-import bien from '../assets/bien.svg';
+import { Link } from "react-router-dom"; 
+import { HiOutlineBars3 } from "react-icons/hi2"; 
+import Box from "@mui/material/Box"; 
+import List from "@mui/material/List"; 
+import ListItem from "@mui/material/ListItem"; 
+import ListItemButton from "@mui/material/ListItemButton"; 
+import ListItemIcon from "@mui/material/ListItemIcon"; 
+import ListItemText from "@mui/material/ListItemText"; 
+import HomeIcon from "@mui/icons-material/Home"; 
+import ListIcon from "@mui/icons-material/List"; 
+import PersonAddIcon from "@mui/icons-material/PersonAdd"; 
+import bien from '../assets/bien.svg'; 
 import LogoutIcon from "@mui/icons-material/Logout";
 
-const manejarCerrarSesion = () => {
-  localStorage.removeItem("access_token");
-  localStorage.removeItem("refresh_token");
-  localStorage.removeItem("userId");
-  localStorage.removeItem("userType");
-  localStorage.removeItem("userName");
-  window.location.href = "/login2";
+const manejarCerrarSesion = () => { 
+  localStorage.removeItem("access_token"); 
+  localStorage.removeItem("refresh_token"); 
+  localStorage.removeItem("userId"); 
+  localStorage.removeItem("userType"); 
+  localStorage.removeItem("userName"); 
+  window.location.href = "/login2"; 
 };
 
-const Home2 = () => {
+const Home2 = () => { 
   const [abrirMenu, setAbrirMenu] = useState(true);
 
   const manejarResize = () => {
@@ -43,21 +43,9 @@ const Home2 = () => {
   }, []);
 
   const opcionesMenu = [
-    {
-      text: "Inicio",
-      icon: <HomeIcon fontSize="large" />,
-      link: "/home2",
-    },
-    {
-      text: "Listados",
-      icon: <ListIcon fontSize="large" />,
-      link: "/Listados",
-    },
-    {
-      text: "Registrar",
-      icon: <PersonAddIcon fontSize="large" />,
-      link: "/registros",
-    },
+    { text: "Inicio", icon: <HomeIcon fontSize="large" />, link: "/home2" },
+    { text: "Listados", icon: <ListIcon fontSize="large" />, link: "/Listados" },
+    { text: "Registrar", icon: <PersonAddIcon fontSize="large" />, link: "/Registros" },
   ];
 
   return (
@@ -69,21 +57,22 @@ const Home2 = () => {
           left: 0,
           display: 'flex',
           flexDirection: 'column',
-          width: abrirMenu ? '250px' : '80px', 
+          width: abrirMenu ? '250px' : '80px',
           height: '100%',
-          backgroundColor: '#27496D', 
+          backgroundColor: '#27496D',
           transition: 'width 0.3s ease',
           overflow: 'hidden',
-          zIndex: 1, 
-          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)", 
+          zIndex: 1,
+          boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
           borderRadius: '40px 40px 40px 20px',
         }}
       >
-        <Box 
-          sx={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            height: '64px', 
+        {/* Botón para abrir/cerrar el menú */}
+        <Box
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            height: '64px',
             padding: '0 16px',
             backgroundColor: '#00A8CC',
           }}
@@ -136,7 +125,7 @@ const Home2 = () => {
               <LogoutIcon fontSize="large" />
             </ListItemIcon>
             <ListItemText
-              primary="Cerrar "
+              primary="Cerrar sesión"
               sx={{
                 color: '#ffffff',
                 opacity: abrirMenu ? 1 : 0,
@@ -154,15 +143,15 @@ const Home2 = () => {
           marginLeft: abrirMenu ? '250px' : '80px', // Ajuste de marginLeft según el estado del menú
           width: 'calc(100% - (abrirMenu ? 250 : 80)px)', // Asegura que el ancho sea dinámico
           padding: '20px',
-          backgroundColor: '#C1DADF', 
+          backgroundColor: '#C1DADF',
           display: 'flex',
           flexDirection: 'row',
-          justifyContent: 'space-between', 
+          justifyContent: 'space-between',
           alignItems: 'center',
           height: '100%',
-          borderRadius: '30px', 
-          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)', 
-          zIndex: '2', 
+          borderRadius: '30px',
+          boxShadow: '0px 4px 20px rgba(0, 0, 0, 0.2)',
+          zIndex: '2',
           position: 'relative',
         }}
       >
@@ -171,15 +160,15 @@ const Home2 = () => {
             Bienvenido a ISES Gestión
           </h1>
           <p style={{ color: '#545CA1', fontSize: '1.5rem', lineHeight: '1.7' }}>
-            En este sistema podrás registrar usuarios, cargar materias y carreras, 
+            En este sistema podrás registrar usuarios, cargar materias y carreras,
             así como listar las mismas para sus respectivas modificaciones.
           </p>
         </Box>
 
         <Box
           sx={{
-            width: '70%', // Ajusta el ancho según sea necesario
-            height: '100%', 
+            width: '70%',
+            height: '100%',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',

@@ -1,5 +1,15 @@
+<<<<<<< HEAD
 import React from "react";
 import { Modal, Button, TextField, Typography, Grid } from "@mui/material";
+=======
+<<<<<<< HEAD
+import React, { useEffect } from "react";
+import { Modal, Button } from "@mui/material";
+=======
+import React from "react";
+import { Modal, Button, TextField, Typography, Grid } from "@mui/material";
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
 
 function ModalEdicionCarrera(props) {
   const {
@@ -24,6 +34,20 @@ function ModalEdicionCarrera(props) {
     boxShadow: "0 0.5rem 1rem rgba(0, 0, 0, 0.3)",
   };
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+  // Asegúrate de que los valores se actualicen cuando el modal se abra
+  useEffect(() => {
+    if (open) {
+      // Aquí se puede hacer cualquier validación o ajuste del estado
+      // por ejemplo, asegurándote de que editedMateriaData esté correctamente inicializado
+    }
+  }, [open]); // Solo se ejecuta cuando el modal se abre
+
+=======
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
   return (
     <Modal
       open={open}
@@ -40,8 +64,15 @@ function ModalEdicionCarrera(props) {
             <TextField
               id="nombre"
               name="nombre"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+              value={editedMateriaData.nombre || ""} // Aseguramos que el campo tenga un valor por defecto
+=======
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
               label="Nombre Carrera"
               value={editedMateriaData.nombre}
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
               onChange={(e) =>
                 setEditedMateriaData({
                   ...editedMateriaData,
@@ -53,6 +84,7 @@ function ModalEdicionCarrera(props) {
             />
           </Grid>
 
+<<<<<<< HEAD
           <Grid item xs={12}>
             <Typography variant="body1">Estado Carrera:</Typography>
             <Grid container spacing={2}>
@@ -69,6 +101,63 @@ function ModalEdicionCarrera(props) {
                 <label htmlFor="activo">Activo</label>
               </Grid>
 
+=======
+<<<<<<< HEAD
+          <div>
+            <label htmlFor="id_estado_carrera">Estado Carrera:</label>
+            <input
+              type="radio"
+              id="activo"
+              name="id_estado_carrera"
+              value="1"
+              checked={editedMateriaData.id_estado_carrera === "1"} // Verifica que se seleccione el valor correcto
+              onChange={handleRadioChange} // Utiliza la función pasada como prop
+              style={{
+                width: 20,
+                height: 20,
+                margin: "10px",
+              }}
+            />
+            <label htmlFor="activo">Activo</label>
+
+            <input
+              type="radio"
+              id="inactivo"
+              name="id_estado_carrera"
+              value="2"
+              checked={editedMateriaData.id_estado_carrera === "2"} // Verifica que se seleccione el valor correcto
+              onChange={handleRadioChange} // Utiliza la función pasada como prop
+              style={{
+                width: 20,
+                height: 20,
+                margin: "10px",
+              }}
+            />
+            <label htmlFor="inactivo">Inactivo</label>
+          </div>
+        </form>
+
+        <div>
+          <Button onClick={handleSaveEdit}>Guardar</Button>
+          <Button onClick={handleEditModalClose}>Cancelar</Button>
+=======
+          <Grid item xs={12}>
+            <Typography variant="body1">Estado Carrera:</Typography>
+            <Grid container spacing={2}>
+              <Grid item>
+                <input
+                  type="radio"
+                  id="activo"
+                  name="id_estado_carrera"
+                  value="1"
+                  checked={editedMateriaData.id_estado_carrera === "1"}
+                  onChange={handleRadioChange}
+                  style={{ marginRight: "0.5rem" }}
+                />
+                <label htmlFor="activo">Activo</label>
+              </Grid>
+
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
               <Grid item>
                 <input
                   type="radio"
@@ -92,6 +181,10 @@ function ModalEdicionCarrera(props) {
           <Button variant="outlined" color="secondary" onClick={handleEditModalClose}>
             Cancelar
           </Button>
+<<<<<<< HEAD
+=======
+>>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
+>>>>>>> d763d5a58ce843d7daf9aa04ceebdfba03de3af4
         </div>
       </div>
     </Modal>

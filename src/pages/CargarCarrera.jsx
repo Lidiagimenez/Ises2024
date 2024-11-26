@@ -20,12 +20,12 @@ const CargarCarrera = () => {
   const formik = useFormik({
     initialValues: {
       nombre: "",
-      id_estado_carrera: "1", // Cambiado para tener un valor inicial válido
+      id_estado_carrera: "1", 
       alta_baja: "1",
     },
     validationSchema: Yup.object({
       nombre: Yup.string().required("Debe ingresar un nombre"),
-      id_estado_carrera: Yup.string().required("ingrese estado carrera"), // Cambiado a string
+      id_estado_carrera: Yup.string().required("ingrese estado carrera"), 
       alta_baja: Yup.number().required("ingrese alt"),
     }),
     onSubmit: async (data) => {
@@ -69,29 +69,17 @@ const CargarCarrera = () => {
 
   return (
     <>
-<<<<<<< HEAD
       <Box sx={numberTagStyle('#0C7B93')}>02</Box>
       <Typography
         align="center"
         padding={"2rem"}
         sx={{
           fontSize: '1.5rem', 
-=======
-      <Typography
-        align="center"
-        padding={"10px"}
-        sx={{
-          fontSize: '2rem', 
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
           fontWeight: 'bold',
           color: "#27496D",
         }}
       >
-<<<<<<< HEAD
         Completar Formulario de registro Carreras
-=======
-        Completar Formulario <br />de registro Carreras
->>>>>>> 259eab9d1fea4a4bab0be655adad0b4477e9488e
       </Typography>
       <Box component="form" onSubmit={formik.handleSubmit}>
         <Grid

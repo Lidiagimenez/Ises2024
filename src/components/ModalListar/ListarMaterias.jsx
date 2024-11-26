@@ -1,7 +1,8 @@
 import * as React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../api/axios.js"
 import { Button, Container, MenuList } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Box, Typography } from '@mui/material';
@@ -59,7 +60,7 @@ function MateriasTable() {
   });
   const listado = async () => {
     try {
-      const respuesta = await axios.get("http://localhost:3000/api/v1/materias");
+      const respuesta = await axios.get("/api/v1/materias");
       console.log([respuesta]);
       setMaterias(respuesta.data);
     } catch (error) {
@@ -114,7 +115,7 @@ function MateriasTable() {
     try {
       // Envía los cambios al backend para actualizar el usuario
       await axios.put(
-        `http://localhost:3000/api/v1/materias/${editedMateriaData.id_materia}`,
+        `/api/v1/materias/${editedMateriaData.id_materia}`,
         editedMateriaData
       );
 
@@ -136,7 +137,7 @@ function MateriasTable() {
     try {
       // Envía los cambios al backend para actualizar el usuario
       const response = await axios.put(
-        `http://localhost:3000/api/v1/Materias/${deleteMateriaData.id_materia}`,
+        `/api/v1/Materias/${deleteMateriaData.id_materia}`,
         deleteMateriaData// Enviar solo el valor que deseas actualizar
       );
   

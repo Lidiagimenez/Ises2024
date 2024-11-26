@@ -2,7 +2,8 @@ import { Avatar, Box, Button, Checkbox, Container, FormControlLabel, Grid, Paper
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../api/axios.js"
 import { useNavigate } from 'react-router-dom';
 import { jwtDecode } from "jwt-decode";
 
@@ -31,7 +32,7 @@ const Login2 = () => {
       validationSchema: validationSchema,
       onSubmit: async (values) => { 
         try {
-          const response = await axios.post("http://localhost:3000/api/v1/autentificacion/login", {
+          const response = await axios.post("/api/v1/autentificacion/login", {
             username: values.username,
             password: values.password,
           });

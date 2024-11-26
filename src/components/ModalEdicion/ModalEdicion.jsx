@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Grid, TextField, FormControlLabel, Radio, RadioGroup, FormLabel, MenuItem, Select, InputLabel, FormControl } from "@mui/material";
-import axios from 'axios';
-// import axios from "../../api/axios";
+// import axios from 'axios';
+import axios from "../../api/axios.js";
 
 function ModalEdicion(props) {
   const {
@@ -28,7 +28,7 @@ function ModalEdicion(props) {
   };
 
   useEffect(() => {
-    axios.get("http://localhost:3000/api/v1/carreras") 
+    axios.get("/api/v1/carreras") 
       .then((response) => {
         setCarreras(response.data);  
       })

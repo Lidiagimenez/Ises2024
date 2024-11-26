@@ -1,7 +1,8 @@
 import * as React from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../api/axios.js"
 import { Button, Container,Box, MenuList } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Navegador from "../Navegador";
@@ -43,7 +44,7 @@ function CarrerasTable() {
   const listado = async () => {
     try {
       const respuesta = await axios.get(
-        "http://localhost:3000/api/v1/carreras"
+        "/api/v1/carreras"
       );
       console.log([respuesta]);
       setCarreras(respuesta.data);
@@ -97,7 +98,7 @@ function CarrerasTable() {
     try {
       // Envía los cambios al backend para actualizar el usuario
       await axios.put(
-        `http://localhost:3000/api/v1/carreras/${editedMateriaData.id_carrera}`,
+        `/api/v1/carreras/${editedMateriaData.id_carrera}`,
         editedMateriaData
       );
 
@@ -121,7 +122,7 @@ function CarrerasTable() {
     try {
       // Envía los cambios al backend para actualizar el usuario
       const response = await axios.put(
-        `http://localhost:3000/api/v1/carreras/${deleteMateriaData.id_carrera}`,
+        `/api/v1/carreras/${deleteMateriaData.id_carrera}`,
         deleteMateriaData // Enviar solo el valor que deseas actualizar
       );
 

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useFormik } from "formik";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../api/axios.js";
 import * as Yup from "yup";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
@@ -47,7 +48,7 @@ const CargarMaterias = () => {
 
     onSubmit: async (data) => {
       try {
-        const respuesta = await axios.post("http://localhost:3000/api/v1/materias",data);
+        const respuesta = await axios.post("/api/v1/materias",data);
         abrirModal();
         formik.resetForm();
         

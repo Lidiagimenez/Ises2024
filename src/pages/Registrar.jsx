@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useFormik } from "formik";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../api/axios.js";
 import * as Yup from "yup";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
@@ -38,7 +39,7 @@ function Registrar() {
     const buscarCarreras = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:3000/api/v1/carreras"
+          "/api/v1/carreras"
         );
         setCarreras(response.data); // Guarda los datos en el estado
       } catch (error) {
@@ -115,7 +116,7 @@ function Registrar() {
     onSubmit: async (data) => {
       try {
         const respuesta = await axios.post(
-          "http://localhost:3000/api/v1/users",
+          "/api/v1/users",
           {
             nombre: data.nombre,
             apellido: data.apellido,
@@ -143,7 +144,7 @@ function Registrar() {
         if (data.id_tipo_usuario === 3) {
           // Si es un alumno, inserta el legajo en la tabla de alumnos
 
-          await axios.post("http://localhost:3000/api/v1/alumnos", {
+          await axios.post("/api/v1/alumnos", {
             legajo: data.legajo,
             fecha_inscripcion: data.fecha_inscripcion,
             id_carrera: data.id_carrera,

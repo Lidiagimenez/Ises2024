@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, CardContent, Button, Typography, Box, Container } from '@mui/material'; 
-import Nav from './nav';
+import Nav from "./Nav"
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import SchoolIcon from '@mui/icons-material/School';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
@@ -92,8 +92,7 @@ const Registros = () => {
             // justifyContent: 'space-around',
             alignItems:'center',
             flexWrap: 'wrap',
-            gap: '20px',
-            // background:'red'
+            gap: '20px'
           }}
         >
           <Box sx={cardContainerStyle('#27496D')}>
@@ -152,14 +151,9 @@ const Registros = () => {
           sx={{
             marginTop: '20px',
             backgroundColor: '#C1DADF',
-            // borderRadius: '2rem',
-            // padding: '20px',
             boxShadow: '0px 4px 12px rgba(0, 0, 0, 0.1)',
             width:'auto',
-            height: 'auto',
-            // display: 'flex',
-            // justifyContent: 'center',
-            // alignItems: 'center',
+            height: 'auto'
           }}
         >
           {mostrarRegistrar && <Registrar />}

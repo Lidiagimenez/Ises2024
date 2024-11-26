@@ -1,7 +1,8 @@
 import * as React from "react"; 
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../api/axios.js";
 import { Button, Container, Typography, Box } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import ModalEdicion from "../ModalEdicion/ModalEdicion";
@@ -51,7 +52,7 @@ function UserTable() {
 
   const fetchUsers = async () => {
     try {
-      const respuesta = await axios.get("http://localhost:3000/api/v1/users");
+      const respuesta = await axios.get("/api/v1/users");
       setUsers(respuesta.data);
     } catch (error) {
       console.error("Error al obtener los usuarios: ", error);
@@ -125,7 +126,7 @@ function UserTable() {
 
   const handleSaveEdit = async () => {
     try {
-      await axios.put(`http://localhost:3000/api/v1/users/${editedUserData.id_usuario}`, editedUserData);
+      await axios.put(`/api/v1/users/${editedUserData.id_usuario}`, editedUserData);
       const updatedUsers = users.map((user) => 
         user.id_usuario === editedUserData.id_usuario ? editedUserData : user
       );
@@ -139,7 +140,7 @@ function UserTable() {
 
   const handleSaveDelete = async () => {
     try {
-      await axios.put(`http://localhost:3000/api/v1/users/${selectUserDelete.id_usuario}`, { alta_baja: 0 });
+      await axios.put(`/api/v1/users/${selectUserDelete.id_usuario}`, { alta_baja: 0 });
       setUsers(users.filter(user => user.id_usuario !== selectUserDelete.id_usuario));
       setIsDeleteModalOpen(false);
     } catch (error) {

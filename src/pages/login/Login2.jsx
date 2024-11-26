@@ -32,7 +32,7 @@ const Login2 = () => {
       validationSchema: validationSchema,
       onSubmit: async (values) => { 
         try {
-          const response = await axios.post("/api/v1/autentificacion/login", {
+          const response = await axios.post("https://ises2024back.onrender.com/api/v1/autentificacion/login", {
             username: values.username,
             password: values.password,
           });
